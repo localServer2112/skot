@@ -180,6 +180,9 @@ button{font:inherit; color:inherit; background:none; border:0; cursor:pointer}
 .btn-sm{padding:.55rem 1rem; font-size:var(--fs-xs); letter-spacing:var(--ls-btn); line-height:var(--lh-xs)}
 .btn-solid{background:var(--ink); color:var(--canvas)}
 .btn-solid:hover{background:#000}
+/* Page-hero calls to action carry the SKOT red, as on the home hero. */
+.phero .btn-solid{background:var(--scarlet)}
+.phero .btn-solid:hover{background:#B30018}
 .btn-ghost{border-color:var(--line); background:var(--canvas); color:var(--ink)}
 .btn-ghost:hover{border-color:var(--ink-38)}
 .btn-light{background:var(--canvas); color:var(--ink)}
@@ -610,9 +613,13 @@ body[data-page="programmes"] .nav-desktop [data-nav="programmes"],
 .stat-l{margin-top:.6rem; font-size:var(--fs-xs); letter-spacing:var(--ls-xs); line-height:var(--lh-xs); color:var(--ink-56)}
 
 /* ───── Story cards ───── */
-.card-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line)}
-.card{background:var(--canvas); display:flex; flex-direction:column; transition:background .25s var(--ease)}
+.card-grid{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:1px solid var(--line); border-left:1px solid var(--line)}
+.card{background:var(--canvas); display:flex; flex-direction:column; border-right:1px solid var(--line); border-bottom:1px solid var(--line); transition:background .25s var(--ease)}
 .card:hover{background:var(--panel)}
+/* Whole-card link: the title link's ::after covers the card, so the card is one click target. */
+.card{position:relative}
+.card-link::after{content:""; position:absolute; inset:0; z-index:1}
+.card:has(.card-link:focus-visible){outline:2px solid var(--scarlet); outline-offset:-2px}
 .card-panel{
   position:relative; aspect-ratio:16/10; display:flex; align-items:flex-end;
   padding:1.25rem; overflow:hidden;
@@ -623,6 +630,8 @@ body[data-page="programmes"] .nav-desktop [data-nav="programmes"],
   position:relative; z-index:1; font-size:var(--fs-h3); line-height:var(--lh-h3); font-weight:var(--fw-med);
   letter-spacing:var(--ls-h3); max-width:14ch;
 }
+.card-panel--logo{align-items:center; justify-content:center}
+.card-panel .card-logo{position:static; inset:auto; object-fit:contain; width:auto; height:auto; max-height:clamp(3.5rem,8vw,6.5rem); max-width:60%; display:block}
 .card-panel .mark.mark--xl{font-size:var(--fs-display); line-height:var(--lh-display); letter-spacing:var(--ls-display); max-width:none; text-align:center}
 .panel-ink{background:var(--ink); color:var(--on-dark)}
 .panel-scarlet{background:var(--scarlet); color:#fff}
@@ -906,10 +915,6 @@ body[data-page="contact"] .contact-band{display:none}
 /* Programme facts: short text values ("Tuition-free", "1–2 yrs") sit at a size that fits a third of the column */
 .facts .stat-n{font-size:clamp(1.4rem,2.4vw,2rem); letter-spacing:var(--ls-h3); line-height:var(--lh-h3); white-space:nowrap}
 .facts .stats > div:first-child{padding-left:0}
-
-/* SKOT Elevate carries the SKOT red as its accent: ring and button */
-.prog--elevate .btn-solid{background:var(--scarlet)}
-.prog--elevate .btn-solid:hover{background:#B30018}
 
 /* SKOT Impact Academy carries the brand teal as its accent: ring, button, figures and rules */
 .prog--impact-academy{--scarlet:var(--teal)}

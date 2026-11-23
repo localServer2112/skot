@@ -134,11 +134,17 @@ def stat_cells(metrics, cols=None):
 
 def case_card(c, i):
     chip = '<span class="chip chip--onmedia">%s</span>' % html.escape(c["discipline"])
-    panel = ('<div class="card-panel %s">%s<span class="mark">%s</span></div>'
-             % (PANELS[i % len(PANELS)], chip, html.escape(c.get("panel_name", c["client"]))))
+    logo = client_logo(c["slug"])
+    if logo:
+        panel = ('<div class="card-panel card-panel--logo panel-putty">%s<img class="card-logo" src="%s" alt="%s" '
+                 'width="%d" height="%d" loading="lazy" decoding="async"></div>'
+                 % (chip, logo[0], html.escape(c["client"]), logo[1], logo[2]))
+    else:
+        panel = ('<div class="card-panel %s">%s<span class="mark">%s</span></div>'
+                 % (PANELS[i % len(PANELS)], chip, html.escape(c.get("panel_name", c["client"]))))
     return ('<article class="card" data-discipline="%s" data-search="%s">%s'
             '<div class="card-body"><h3>%s</h3><p>%s</p>'
-            '<a class="alink" href="%s">Read the story %s</a></div></article>'
+            '<a class="alink card-link" href="%s">Read the story %s</a></div></article>'
             % (html.escape(c["discipline"]),
                html.escape((c["client"] + " " + c["title"] + " " + c["sector"]).lower()),
                panel, html.escape(c["title"]), html.escape(c["summary"]), case_href(c), ARROW))
