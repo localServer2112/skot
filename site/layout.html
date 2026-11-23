@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}}</title>
+<meta name="description" content="{{DESC}}">
+<meta name="theme-color" content="#FBFBF9">
+<link rel="icon" href="assets/img/skot-mark.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css?v={{CSS_V}}">
+</head>
+<body data-page="{{PAGEKEY}}">
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-header" id="header">
+  <div class="shell header-inner">
+    <a class="brand" href="index.html" aria-label="SKOT Communications — home">
+      <img src="assets/img/skot-mark.png" alt="SKOT Communications" width="1079" height="443">
+    </a>
+
+    <nav class="nav-desktop" aria-label="Primary">
+{{NAV_DESKTOP}}
+    </nav>
+
+    <div class="header-actions">
+      <a class="btn btn-solid btn-sm" href="contact.html">Speak with advisory</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="navMobile" aria-label="Open menu">
+        <span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="nav-mobile" id="navMobile" hidden>
+    <nav aria-label="Mobile">
+{{NAV_MOBILE}}
+    </nav>
+    <a class="btn btn-solid" href="contact.html">Speak with advisory</a>
+  </div>
+</header>
+
+<main id="main">
+{{BODY}}
+</main>
+
+<section class="contact-band" id="contact-band">
+  <div class="shell">
+    <div class="contact-top">
+      <div>
+        <p class="label label--light">Get in touch</p>
+        <h2 class="h1 contact-head">Let's define your voice.</h2>
+      </div>
+      <ul class="triggers">
+        <li><a href="mailto:info@skotcomms.com?subject=New%20business%20enquiry">New business enquiry <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="mailto:info@skotcomms.com?subject=Media%20%26%20press">Media &amp; press <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="mailto:info@skotcomms.com?subject=Programmes%20%26%20training">Programmes &amp; training <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+        <li><a href="mailto:info@skotcomms.com?subject=Crisis%20support">Crisis &amp; issues support <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a></li>
+      </ul>
+    </div>
+    <dl class="contact-details">
+      <div><dt>Headquarters</dt><dd>4th Floor, NIJ House<br>20 Adeyemo Alakija<br>Victoria Island, Lagos</dd></div>
+      <div><dt>Email</dt><dd><a href="mailto:info@skotcomms.com">info@skotcomms.com</a></dd></div>
+      <div><dt>Telephone</dt><dd><a href="tel:+2349020000677">+234 902 000 0677</a></dd></div>
+      <div><dt>Follow</dt><dd>
+        <a href="https://www.linkedin.com/company/skot-communications/" target="_blank" rel="noopener">LinkedIn</a><br>
+        <a href="https://www.instagram.com/skot.comms/" target="_blank" rel="noopener">Instagram</a>
+      </dd></div>
+    </dl>
+  </div>
+</section>
+
+<div class="spectrum" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+
+<footer class="site-footer">
+  <div class="shell footer-grid">
+    <div class="footer-brand">
+      <img class="footer-mark" src="assets/img/skot-logo-light.png" alt="SKOT Communications" width="1079" height="639">
+      <p>Exclusive Nigerian partner of PROI Worldwide, the fourth largest PR network in the world.</p>
+    </div>
+{{FOOTER_COLS}}
+  </div>
+  <div class="shell footer-base">
+    <p>© <span id="yr">2026</span> SKOT Communications. All rights reserved.</p>
+    <p>Strategic communications &amp; reputation management · Lagos, Nigeria</p>
+  </div>
+</footer>
+
+<script src="assets/js/main.js?v={{JS_V}}" defer></script>
+</body>
+</html>

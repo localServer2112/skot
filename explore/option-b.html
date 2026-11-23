@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Option B · Editorial — SKOT Communications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=Instrument+Serif:ital@0;1&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* OPTION B · EDITORIAL
+   Mobbin references: Collins (serif statement plus tall portrait card shelf), Lynx (colour block overlapping a photograph),
+   ASMobbin (crop marks, mono captions, italic accent word), Structured (giant serif wordmark), Fiasco (stat rows). */
+:root{--ala:#FBFBF9;--obs:#111315;--put:#ECE8DF;--put2:#DDD8CC;--scar:#D6001C;--scar-t:#B50018;--scar-d:#FF5468;--ink:#111315;--lit:#111315;--dim:rgba(17,19,21,.16);--max:1400px;--g:clamp(20px,4vw,56px);--serif:"Instrument Serif",Georgia,serif}
+body{background:var(--ala);color:var(--ink)}
+.shell{max-width:var(--max);margin-inline:auto;padding-inline:var(--g)}
+.serif{font-family:var(--serif);font-weight:400;letter-spacing:-.02em}
+.serif em,.it{font-style:italic;color:var(--scar-t)}
+.res .serif em,.res .rows i{color:var(--scar-d)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;height:50px;padding:0 1.6rem;border-radius:2px;font-weight:510;transition:background .25s,color .25s,transform .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-k{background:var(--obs);color:var(--ala)}.btn-k:hover{background:var(--scar)}
+.btn-l{border:1px solid var(--obs)}.btn-l:hover{background:var(--obs);color:var(--ala)}
+.lnk{display:inline-flex;gap:.5rem;align-items:center;font-weight:510;border-bottom:1px solid currentColor;padding-bottom:2px}
+.arr{width:1em;height:1em;transition:transform .25s}.lnk:hover .arr,.btn:hover .arr{transform:translateX(4px)}
+.eyebrow{display:flex;align-items:center;gap:.7rem;color:rgba(17,19,21,.65)}
+.eyebrow::before{content:"";width:9px;aspect-ratio:1;border-radius:50%;border:2px solid var(--scar)}
+
+/* top bar */
+.bar{position:sticky;top:0;z-index:20;background:rgba(251,251,249,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--put2)}
+.bar .shell{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;height:76px}
+.bar ul{display:flex;gap:1.8rem;font-weight:510}
+.bar ul a:hover{color:var(--scar)}
+.bar img{height:44px;width:auto}
+.bar .r{justify-self:end}
+
+/* hero */
+.hero{padding-block:clamp(40px,6vw,88px) clamp(70px,9vw,130px)}
+.hero-grid{display:grid;grid-template-columns:1.12fr 1fr;gap:clamp(28px,5vw,90px);align-items:center}
+.hero h1{font-size:clamp(3.4rem,8.6vw,9rem);line-height:.9;margin-top:1.8rem}
+.hero .lede{margin-top:2rem;max-width:40ch;font-size:1.25rem;color:rgba(17,19,21,.78);line-height:1.5}
+.hero .cta{display:flex;gap:12px;margin-top:2.2rem;flex-wrap:wrap}
+.facts{display:flex;gap:clamp(20px,3.4vw,52px);margin-top:clamp(36px,5vw,64px);padding-top:26px;border-top:1px solid var(--put2)}
+.facts b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.6vw,3.4rem);line-height:1;letter-spacing:-.02em}
+.facts b i{font-style:normal;color:var(--scar)}
+.facts span{display:block;margin-top:.45rem;color:rgba(17,19,21,.62);font-size:.9375rem}
+.frame{position:relative}
+.frame .ph{aspect-ratio:4/5;overflow:hidden;background:var(--put)}
+.frame .ph img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;transform:scale(1.04);transition:transform 1.6s cubic-bezier(.2,.7,.2,1)}
+.frame:hover .ph img{transform:scale(1)}
+.frame .m{position:absolute;width:24px;height:24px;border:2px solid var(--ala);z-index:3}
+.m1{left:16px;top:16px;border-right:0;border-bottom:0}.m2{right:16px;top:16px;border-left:0;border-bottom:0}.m3{left:16px;bottom:16px;border-right:0;border-top:0}.m4{right:16px;bottom:16px;border-left:0;border-top:0}
+.frame .block{position:absolute;left:-9%;bottom:7%;width:min(66%,300px);background:var(--scar);color:var(--ala);padding:22px 24px 24px;z-index:4}
+.block b{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(3.2rem,5vw,4.8rem);line-height:.9;letter-spacing:-.03em}
+.block b i{font-style:normal;opacity:.7}
+.block span{display:block;margin-top:.7rem;font-size:.9375rem;line-height:1.35;color:rgba(251,251,249,.92)}
+.stamp{position:absolute;right:-5%;top:-6%;width:clamp(110px,12vw,150px);aspect-ratio:1;z-index:5;background:var(--ala);border-radius:50%;display:grid;place-items:center;box-shadow:0 0 0 1px var(--put2)}
+.stamp svg{width:100%;height:100%;animation:spin 26s linear infinite}
+.stamp .c{position:absolute;inset:34%;border-radius:50%;border:5px solid var(--scar)}
+.stamp .d{position:absolute;left:50%;bottom:20%;width:6px;aspect-ratio:1;border-radius:50%;background:#666;translate:-50% 0}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stamp text{font-family:"IBM Plex Mono",monospace;font-size:10.4px;letter-spacing:.2em;fill:var(--ink);text-transform:uppercase}
+
+/* approach */
+.appr{background:var(--put);padding-block:clamp(80px,11vw,160px)}
+.appr-grid{display:grid;grid-template-columns:1fr 3fr;gap:clamp(24px,5vw,80px)}
+.wf{font-family:var(--serif);font-size:clamp(2.2rem,4.8vw,4.8rem);line-height:1.04;letter-spacing:-.025em;--dim:rgba(17,19,21,.2)}
+.method{display:grid;grid-template-columns:repeat(3,1fr);margin-top:clamp(50px,7vw,100px);border-top:1px solid var(--put2)}
+.method>div{padding:28px 28px 8px 0}
+.method>div+div{padding-left:28px;border-left:1px solid var(--put2)}
+.method svg{width:84px;height:84px;color:var(--ink);margin-bottom:1.4rem}
+.method circle{fill:none;stroke:currentColor;stroke-width:1.3}
+.method .ac{stroke:var(--scar);stroke-width:5}
+.method h2{font-family:var(--serif);font-weight:400;font-size:2.2rem;letter-spacing:-.02em;line-height:1}
+.method p{margin-top:.8rem;max-width:34ch;color:rgba(17,19,21,.78)}
+
+/* expertise cards */
+.xp{padding-block:clamp(80px,10vw,150px)}
+.head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:clamp(30px,4.5vw,60px)}
+.head h2{font-size:clamp(2.6rem,5.6vw,5.6rem);line-height:.95;max-width:12ch}
+.xp-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.xc{position:relative;aspect-ratio:3/4.5;overflow:hidden;color:var(--ala);display:flex;flex-direction:column;justify-content:space-between;padding:22px;isolation:isolate}
+.xc img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);transition:filter .8s,transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.xc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(17,19,21,.88),rgba(17,19,21,.1) 62%)}
+.xc:hover img{filter:none;transform:scale(1.06)}
+.xc .t{display:flex;justify-content:space-between}
+.xc h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.8rem,2.6vw,2.5rem);line-height:1;letter-spacing:-.02em}
+.xc p{max-height:0;opacity:0;overflow:hidden;transition:max-height .5s,opacity .5s,margin .5s;font-size:.9375rem;line-height:1.45;color:rgba(251,251,249,.9)}
+.xc:hover p{max-height:7em;opacity:1;margin-top:.8rem}
+.xc .bar2{width:34px;height:2px;background:var(--scar);margin-bottom:1rem;transition:width .5s}.xc:hover .bar2{width:72px}
+
+/* results */
+.res{background:var(--obs);color:var(--ala);padding-block:clamp(80px,10vw,150px)}
+.res-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,6vw,100px)}
+.res h2{font-size:clamp(2.8rem,6vw,6rem);line-height:.94;max-width:9ch}
+.res .lead{margin-top:1.6rem;max-width:34ch;color:rgba(251,251,249,.72);font-size:1.125rem}
+.rows li{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:1rem;padding-block:clamp(14px,1.8vw,24px);border-top:1px solid #2c2f32}
+.rows li:last-child{border-bottom:1px solid #2c2f32}
+.rows b{font-family:var(--serif);font-weight:400;font-size:clamp(3.4rem,8.2vw,8.2rem);line-height:.92;letter-spacing:-.035em;font-variant-numeric:tabular-nums}
+.rows b i{font-style:normal;color:var(--scar-d)}
+.rows span{color:rgba(251,251,249,.7);max-width:12ch}
+
+/* featured case */
+.feat{padding-block:clamp(80px,10vw,150px)}
+.feat-card{display:grid;grid-template-columns:1.1fr 1fr;background:var(--put);min-height:540px}
+.feat-l{background:var(--scar);color:var(--ala);padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}
+.feat-l b{font-family:var(--serif);font-weight:400;font-size:clamp(6rem,15vw,15rem);line-height:.8;letter-spacing:-.05em}
+.feat-l b i{font-style:normal;opacity:.65}
+.feat-l .ringbg{position:absolute;right:-30%;bottom:-40%;width:90%;color:var(--ala);opacity:.3}
+.feat-l .ringbg circle{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+.feat-r{padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;justify-content:space-between;gap:2rem}
+.feat-r h3{font-family:var(--serif);font-weight:400;font-size:clamp(2rem,3.4vw,3.4rem);line-height:1.02;letter-spacing:-.02em}
+.feat-r p{color:rgba(17,19,21,.72);max-width:42ch;margin-top:1.2rem}
+.idx{margin-top:14px}
+.idx a{display:grid;grid-template-columns:3rem 1fr auto auto;gap:1.2rem;align-items:baseline;padding-block:22px;border-top:1px solid var(--put2);transition:padding .35s,background .35s}
+.idx a:last-child{border-bottom:1px solid var(--put2)}
+.idx a:hover{padding-inline:16px;background:var(--put)}
+.idx h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.4rem,2.2vw,2.1rem);line-height:1.05;letter-spacing:-.015em}
+.idx b{font-family:var(--serif);font-weight:400;font-size:1.8rem;color:var(--scar-t)}
+.idx .a{width:1em;transition:transform .3s}.idx a:hover .a{transform:translateX(5px)}
+
+/* programmes */
+.prog{padding-bottom:clamp(80px,10vw,150px)}
+.prog-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.pc{position:relative;aspect-ratio:4/3;overflow:hidden;color:var(--ala);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(22px,3vw,40px);isolation:isolate}
+.pc img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.pc::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(17,19,21,.85),rgba(17,19,21,.05) 65%)}
+.pc:hover img{transform:scale(1.05)}
+.pc h3{font-family:var(--serif);font-weight:400;font-size:clamp(2.2rem,3.8vw,3.8rem);line-height:.98;letter-spacing:-.02em}
+.pc p{margin-top:.6rem;max-width:38ch;color:rgba(251,251,249,.9)}
+
+/* insights */
+.ins{background:var(--put);padding-block:clamp(80px,10vw,150px)}
+.ins-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.post .pic{aspect-ratio:4/3;overflow:hidden;background:var(--put2)}
+.post .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.post:hover .pic img{transform:scale(1.05)}
+.post .mono{margin-top:1.1rem;color:var(--scar-t)}
+.post h3{font-family:var(--serif);font-weight:400;font-size:clamp(1.6rem,2.2vw,2.1rem);line-height:1.05;letter-spacing:-.015em;margin-top:.5rem;max-width:20ch}
+
+/* footer */
+.foot{background:var(--put2);padding-top:clamp(70px,9vw,120px);overflow:hidden}
+.talk{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.talk h2{font-size:clamp(3rem,7.4vw,7.6rem);line-height:.9;max-width:11ch}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding-block:clamp(44px,6vw,80px) 36px;border-top:1px solid rgba(17,19,21,.18);margin-top:clamp(44px,6vw,80px);font-size:.9375rem}
+.cols h4{margin:0 0 1rem;font-weight:400;color:rgba(17,19,21,.74)}
+.cols li+li{margin-top:.5rem}.cols a:hover{color:var(--scar)}
+.giant{display:block;width:calc(100% - 2*var(--g));margin:clamp(24px,4vw,56px) auto -7.5%}
+.legal{position:relative;z-index:2;display:flex;justify-content:space-between;padding-block:20px;font-size:.8125rem;color:rgba(17,19,21,.74)}
+
+@media (max-width:980px){
+  .bar ul{display:none}.bar .shell{grid-template-columns:1fr auto}.bar .r{display:none}
+  .hero-grid,.appr-grid,.res-grid,.feat-card,.prog-grid,.ins-grid{grid-template-columns:1fr}
+  .frame .block{left:4%}.stamp{right:2%}
+  .method{grid-template-columns:1fr}.method>div+div{border-left:0;border-top:1px solid var(--put2);padding-left:0}
+  .xp-cards{grid-template-columns:1fr 1fr}.xc p{max-height:7em;opacity:1;margin-top:.8rem}
+  .head{flex-direction:column;align-items:flex-start}.cols{grid-template-columns:1fr 1fr}
+  .idx a{grid-template-columns:2.4rem 1fr auto}.idx .a{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="shell">
+  <ul><li><a href="#">About</a></li><li><a href="#xp">Expertise</a></li><li><a href="#cases">Case studies</a></li><li><a href="#ins">Insights</a></li></ul>
+  <a href="#"><img src="../assets/img/skot-logo.png" alt="SKOT Communications"></a>
+  <div class="r"><a class="btn btn-k" href="#talk">Speak with advisory</a></div>
+</div></header>
+
+<section class="hero"><div class="shell hero-grid">
+  <div>
+    <p class="mono eyebrow">Strategic communications · Sub-Saharan Africa</p>
+    <h1 class="serif">Find your <em>voice.</em><br>Speak to your <em>people.</em></h1>
+    <p class="lede">A strategic communications and reputation consultancy. We advise on what to say, to whom and when, then deliver it.</p>
+    <div class="cta"><a class="btn btn-k" href="#talk">Speak with our advisory team <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-l" href="#xp">Explore our expertise</a></div>
+    <div class="facts"><div><b>4</b><span>Disciplines</span></div><div><b>105</b><span>Media mentions, one campaign</span></div><div><b>21.87M</b><span>Impressions delivered</span></div></div>
+  </div>
+  <div class="frame">
+    <div class="ph"><img src="../assets/img/hero-voice.jpg" alt="A speaker in profile at a conference"></div>
+    <i class="m m1"></i><i class="m m2"></i><i class="m m3"></i><i class="m m4"></i>
+    <div class="block"><b>526M<i>+</i></b><span>Estimated reach on a single campaign</span></div>
+    <div class="stamp" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><path id="cp" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs><text><textPath href="#cp">Find your voice · Speak to your people ·</textPath></text></svg><i class="c"></i><i class="d"></i></div>
+  </div>
+</div></section>
+
+<section class="appr"><div class="shell">
+  <div class="appr-grid">
+    <p class="mono eyebrow" style="align-self:start;margin-top:1rem">Our approach</p>
+    <p class="wf">We advise organisations on reputation, stakeholders and influence, then deliver the communications strategy and execution that make every message count.</p>
+  </div>
+  <div class="method">
+    <div class="rv"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="30" class="ac" style="stroke-width:4"/></svg><h2>Listen</h2><p>We start by understanding your organisation, your stakeholders and the environment you operate in, before we recommend anything.</p></div>
+    <div class="rv" style="--d:.1s"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="40"/><circle cx="42" cy="42" r="24" class="ac" style="stroke-width:4"/></svg><h2>Speak up</h2><p>Clear, candid advice on what to say, to whom and when, even when it isn't the easy answer.</p></div>
+    <div class="rv" style="--d:.2s"><svg viewBox="0 0 84 84" aria-hidden="true"><circle cx="42" cy="42" r="41"/><circle cx="42" cy="42" r="32"/><circle cx="42" cy="42" r="23"/><circle cx="42" cy="42" r="14" class="ac" style="stroke-width:4"/></svg><h2>Amplify</h2><p>We deliver across media, digital, events and government channels, so the message lands where it counts.</p></div>
+  </div>
+</div></section>
+
+<section class="xp" id="xp"><div class="shell">
+  <div class="head"><h2 class="serif rv">Four disciplines, <em>one</em> voice.</h2><a class="lnk rv" href="#">Explore all expertise <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <div class="xp-cards">
+    <a class="xc rv" href="#"><img src="../assets/img/exp-corporate.jpg" alt=""><div class="t mono"><span>01</span></div><div><i class="bar2" style="display:block"></i><h3>Corporate &amp; Brand Communications</h3><p>Purpose, positioning and voice, aligned with business ambition.</p></div></a>
+    <a class="xc rv" style="--d:.07s" href="#"><img src="../assets/img/exp-public.jpg" alt=""><div class="t mono"><span>02</span></div><div><i class="bar2" style="display:block"></i><h3>Public Affairs &amp; Advocacy</h3><p>Influence where decisions are actually made.</p></div></a>
+    <a class="xc rv" style="--d:.14s" href="#"><img src="../assets/img/exp-digital.jpg" alt=""><div class="t mono"><span>03</span></div><div><i class="bar2" style="display:block"></i><h3>Digital &amp; Creative Strategy</h3><p>Campaigns that carry your narrative across the channels that count.</p></div></a>
+    <a class="xc rv" style="--d:.21s" href="#"><img src="../assets/img/exp-crisis.jpg" alt=""><div class="t mono"><span>04</span></div><div><i class="bar2" style="display:block"></i><h3>Crisis &amp; Reputation Management</h3><p>Preparation, response and recovery under pressure.</p></div></a>
+  </div>
+</div></section>
+
+<section class="res"><div class="shell res-grid">
+  <div><p class="mono eyebrow rv" style="color:rgba(251,251,249,.7)">Recent results</p><h2 class="serif rv" style="margin-top:1.4rem">Proof, <em>not</em> promises.</h2><p class="lead rv">Measured across print, broadcast, online and social, on live campaigns for our clients.</p></div>
+  <ul class="rows">
+    <li><b data-count="526" data-unit="M" data-plus="1">526M<i>+</i></b><span>Estimated reach</span></li>
+    <li><b data-count="105">105</b><span>Media mentions</span></li>
+    <li><b data-count="21.87" data-dec="2" data-unit="M">21.87M</b><span>Impressions</span></li>
+    <li><b data-count="45.8" data-dec="1" data-unit="M" data-plus="1">45.8M<i>+</i></b><span>Estimated reach</span></li>
+  </ul>
+</div></section>
+
+<section class="feat" id="cases"><div class="shell">
+  <div class="head"><h2 class="serif rv">Selected <em>work.</em></h2><a class="lnk rv" href="#">All case studies <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <a class="feat-card rv" href="#">
+    <div class="feat-l"><svg class="ringbg" viewBox="-100 -100 200 200" aria-hidden="true"><circle r="22"/><circle r="40"/><circle r="58"/><circle r="76"/><circle r="94"/></svg><p class="mono">Consumer · Food and agriculture</p><b>526M<i>+</i></b></div>
+    <div class="feat-r"><div><p class="mono eyebrow">Featured case study</p><h3 style="margin-top:1.2rem">Turning local dairy investment into a national conversation</h3><p>An investment milestone reframed from corporate announcement into a story about local capability, carried across national media.</p></div><span class="lnk" style="align-self:flex-start">Read the story <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></span></div>
+  </a>
+  <div class="idx">
+    <a href="#"><span class="mono">02</span><h3>Driving digital engagement for a multi-city technology platform</h3><b>21.87M</b><svg class="a" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#"><span class="mono">03</span><h3>Turning an indigenous growth milestone into an industry story</h3><b>105</b><svg class="a" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#"><span class="mono">04</span><h3>Establishing a new voice in Nigeria's leadership conversation</h3><b>1M+</b><svg class="a" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#"><span class="mono">05</span><h3>Making banking recapitalisation matter beyond the financial sector</h3><b>45.8M+</b><svg class="a" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</div></section>
+
+<section class="prog"><div class="shell">
+  <div class="head"><h2 class="serif rv">Building the next <em>voices.</em></h2><a class="lnk rv" href="#">Our programmes <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <div class="prog-grid">
+    <a class="pc rv" href="#"><img src="../assets/img/prog-academy.jpg" alt=""><p class="mono" style="margin-bottom:.8rem">Programme</p><h3>SKOT Academy</h3><p>Communications skills, taught where they're needed most.</p></a>
+    <a class="pc rv" style="--d:.1s" href="#"><img src="../assets/img/prog-elevate.jpg" alt=""><p class="mono" style="margin-bottom:.8rem">Programme</p><h3>SKOT Elevate</h3><p>Executive and leadership communications, developed with you.</p></a>
+  </div>
+</div></section>
+
+<section class="ins" id="ins"><div class="shell">
+  <div class="head"><h2 class="serif rv">Thinking worth <em>sharing.</em></h2><a class="lnk rv" href="#">All insights <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <div class="ins-grid">
+    <a class="post rv" href="#"><div class="pic"><img src="../assets/img/insights/crisis-signals-every-business-should-watch-preparing-befor.jpg" alt=""></div><p class="mono">Crisis communications</p><h3>Crisis signals every business should watch</h3></a>
+    <a class="post rv" style="--d:.08s" href="#"><div class="pic"><img src="../assets/img/insights/finding-the-right-voice-in-a-noisy-world.jpg" alt=""></div><p class="mono">Brand voice</p><h3>Finding the right voice in a noisy world</h3></a>
+    <a class="post rv" style="--d:.16s" href="#"><div class="pic"><img src="../assets/img/insights/2026-glass-house-pr-report-the-state-of-pr-in-africa.jpg" alt=""></div><p class="mono">Research</p><h3>The state of PR in Africa, 2026</h3></a>
+  </div>
+</div></section>
+
+<footer class="foot" id="talk">
+  <div class="shell">
+    <div class="talk"><h2 class="serif rv">Let's shape what <em>they say.</em></h2><a class="btn btn-k rv" href="mailto:info@skotcomms.com">info@skotcomms.com <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    <div class="cols">
+      <div><h4 class="mono">Expertise</h4><ul><li><a href="#">Corporate &amp; Brand</a></li><li><a href="#">Public Affairs</a></li><li><a href="#">Digital &amp; Creative</a></li><li><a href="#">Crisis &amp; Reputation</a></li></ul></div>
+      <div><h4 class="mono">Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Programmes</a></li><li><a href="#">Case studies</a></li><li><a href="#">Insights</a></li></ul></div>
+      <div><h4 class="mono">Visit</h4><p>4th Floor, NIJ House<br>20 Adeyemo Alakija<br>Victoria Island, Lagos</p></div>
+      <div><h4 class="mono">Contact</h4><p>+234 902 000 0677<br>info@skotcomms.com</p></div>
+    </div>
+  </div>
+  <div class="shell legal"><span>© 2026 SKOT Communications</span><span>Lagos · Sub-Saharan Africa</span></div>
+  <img class="giant" src="../assets/img/skot-mark.png" alt="SKOT">
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

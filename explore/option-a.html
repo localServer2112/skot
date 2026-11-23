@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Option A · Drench — SKOT Communications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* OPTION A · DRENCH
+   Mobbin references: Locomotive (single-hue drenched photograph), WRITER (radiating burst behind a portrait),
+   Fiasco (giant light numerals in a ledger), Structured / Waka Waka (oversized cropped wordmark footer). */
+:root{--ala:#FBFBF9;--obs:#111315;--put:#E4E0D6;--scar:#D6001C;--ink:#111315;--lit:#111315;--dim:rgba(17,19,21,.17);--max:1400px;--g:clamp(20px,4vw,56px)}
+body{background:var(--ala);color:var(--ink)}
+.shell{max-width:var(--max);margin-inline:auto;padding-inline:var(--g)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;height:48px;padding:0 1.5rem;border-radius:999px;font-weight:510;font-size:1rem;transition:transform .25s,background .25s,color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-w{background:var(--ala);color:var(--obs)}.btn-w:hover{background:#fff}
+.btn-o{border:1px solid rgba(251,251,249,.55);color:var(--ala)}.btn-o:hover{background:rgba(251,251,249,.12)}
+.btn-k{background:var(--obs);color:var(--ala)}.btn-k:hover{background:var(--scar)}
+.arr{width:1em;height:1em;display:inline-block;transition:transform .25s}.btn:hover .arr,.lnk:hover .arr{transform:translateX(4px)}
+.lnk{display:inline-flex;align-items:center;gap:.5rem;font-weight:510;border-bottom:1px solid currentColor;padding-bottom:2px}
+
+/* hero */
+.hero{position:relative;min-height:max(720px,100svh);color:var(--ala);overflow:hidden;background:var(--obs);display:flex;flex-direction:column}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.18) brightness(.95)}
+.hero .tint{position:absolute;inset:0;background:var(--scar);mix-blend-mode:multiply}
+.hero .fade{position:absolute;inset:0;background:linear-gradient(to top,rgba(17,19,21,.82) 0%,rgba(17,19,21,0) 58%),linear-gradient(to bottom,rgba(17,19,21,.45),rgba(17,19,21,0) 22%)}
+.hero>.shell{width:100%}
+.nav{position:relative;z-index:3;display:flex;align-items:center;justify-content:space-between;padding-block:26px}
+.nav img{height:46px;width:auto}
+.nav ul{display:flex;gap:2.2rem;font-weight:510;font-size:1rem}
+.nav ul a{opacity:.92;position:relative}.nav ul a::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:1px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .3s}.nav ul a:hover::after{transform:scaleX(1)}
+.burst{position:absolute;z-index:1;right:max(3vw,24px);top:50%;width:min(56vmin,580px);aspect-ratio:1;translate:0 -66%;color:var(--ala)}
+.burst .core{position:absolute;inset:25%;border-radius:50%;border:clamp(8px,1.1vw,16px) solid var(--ala)}
+.burst .dot{position:absolute;left:50%;top:100%;width:clamp(12px,1.5vw,22px);aspect-ratio:1;border-radius:50%;background:var(--ala);translate:-50% 22%}
+.burst svg{position:absolute;inset:0;width:100%;height:100%}
+.hero-body{position:relative;z-index:2;margin-top:auto;padding-bottom:clamp(28px,5vh,56px)}
+.hero h1{font-size:clamp(3rem,7.3vw,7.8rem);line-height:.94;letter-spacing:-.045em;font-weight:510}
+.hero h1 em{font-style:normal;display:block;color:rgba(251,251,249,.78)}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-top:clamp(28px,5vh,52px);padding-top:26px;border-top:1px solid rgba(251,251,249,.35)}
+.hero-row p{max-width:38ch;font-size:1.1875rem;line-height:1.5;color:rgba(251,251,249,.92)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap}
+.scroll{display:flex;align-items:center;gap:.7rem;opacity:.85}
+.scroll i{width:1px;height:42px;background:currentColor;position:relative;overflow:hidden}
+.scroll i::after{content:"";position:absolute;left:0;top:-100%;width:1px;height:100%;background:var(--scar);animation:drip 2.2s ease-in-out infinite}
+@keyframes drip{to{top:100%}}
+
+/* strip */
+.strip{background:var(--obs);color:var(--ala);padding-block:18px;border-bottom:1px solid #26292c}
+.strip span{display:inline-flex;align-items:center;gap:2.2rem;padding-right:2.2rem;font-size:.9375rem;letter-spacing:.01em}
+.strip span::after{content:"";width:9px;aspect-ratio:1;border-radius:50%;border:2px solid var(--scar)}
+
+/* statement */
+.state{padding-block:clamp(90px,14vw,190px)}
+.state .mono{color:var(--scar);margin-bottom:2rem;display:flex;align-items:center;gap:.7rem}
+.state .mono::before{content:"";width:9px;aspect-ratio:1;border-radius:50%;border:2px solid var(--scar)}
+.wf{font-size:clamp(2rem,4.7vw,4.6rem);line-height:1.04;letter-spacing:-.035em;font-weight:510;max-width:1180px}
+.state .lnk{margin-top:3rem}
+
+/* expertise */
+.xp{padding-block:0 clamp(80px,10vw,140px)}
+.xp-grid{display:grid;grid-template-columns:1.15fr 1fr;gap:clamp(24px,6vw,100px);align-items:start}
+.xp-list{border-top:1px solid var(--put)}
+.xp-row{display:grid;grid-template-columns:3.2rem 1fr auto;align-items:baseline;gap:1rem;padding-block:clamp(22px,3vw,40px);border-bottom:1px solid var(--put);color:rgba(17,19,21,.4);transition:color .35s}
+.xp-row.on{color:var(--ink)}
+.xp-row h2{font-size:clamp(1.7rem,3.2vw,3.1rem);letter-spacing:-.035em;line-height:1.02;font-weight:510}
+.xp-row p{grid-column:2;max-height:0;overflow:hidden;opacity:0;font-size:1.0625rem;color:rgba(17,19,21,.78);max-width:44ch;transition:max-height .5s,opacity .5s,margin .5s}
+.xp-row.on p{max-height:9em;opacity:1;margin-top:.9rem}
+.xp-row .go{width:2.4rem;aspect-ratio:1;border-radius:50%;border:1px solid currentColor;display:grid;place-items:center;transition:background .3s,color .3s,border-color .3s}
+.xp-row.on .go{background:var(--scar);border-color:var(--scar);color:#fff}
+.xp-pics{position:sticky;top:24px;aspect-ratio:4/5;background:var(--obs);overflow:hidden}
+.xp-pics img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.06);transition:opacity .7s,transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.xp-pics img.on{opacity:1;transform:none}
+.xp-pics .m{position:absolute;width:26px;height:26px;border:2px solid var(--ala);z-index:2}
+.xp-pics .m1{left:16px;top:16px;border-right:0;border-bottom:0}.xp-pics .m2{right:16px;top:16px;border-left:0;border-bottom:0}
+.xp-pics .m3{left:16px;bottom:16px;border-right:0;border-top:0}.xp-pics .m4{right:16px;bottom:16px;border-left:0;border-top:0}
+.xp-pics .tag{position:absolute;left:20px;bottom:20px;z-index:2;color:var(--ala);background:var(--scar);padding:.35rem .6rem;display:none}
+
+/* results */
+.res{position:relative;background:var(--scar);color:var(--ala);overflow:hidden;padding-block:clamp(80px,10vw,150px)}
+.res .ring{position:absolute;left:-18vw;bottom:-26vw;width:62vw;aspect-ratio:1;border-radius:50%;border:1px solid rgba(251,251,249,.22);box-shadow:0 0 0 5vw transparent,0 0 0 calc(5vw) rgba(251,251,249,0)}
+.res .ring::before,.res .ring::after{content:"";position:absolute;border-radius:50%;border:1px solid rgba(251,251,249,.18)}
+.res .ring::before{inset:-6vw}.res .ring::after{inset:-12vw}
+.res-grid{position:relative;display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,6vw,100px)}
+.res h2{font-size:clamp(2.6rem,6vw,6rem);line-height:.96;letter-spacing:-.045em;font-weight:510}
+.res .lead{margin-top:1.6rem;max-width:34ch;font-size:1.1875rem;color:var(--ala)}
+.res .lnk{margin-top:2.4rem}
+.led li{display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;padding-block:clamp(14px,2vw,26px);border-top:1px solid rgba(251,251,249,.4)}
+.led li:last-child{border-bottom:1px solid rgba(251,251,249,.4)}
+.led b{font-weight:400;font-size:clamp(3.4rem,8.6vw,8.6rem);letter-spacing:-.055em;line-height:.95;font-variant-numeric:tabular-nums}
+.led b i{font-style:normal;opacity:.7}
+.led span{font-size:1rem;max-width:12ch;text-align:left;color:var(--ala)}
+
+/* cases */
+.cases{padding-block:clamp(90px,11vw,160px) clamp(60px,8vw,110px)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:clamp(32px,5vw,64px)}
+.sec-head h2{font-size:clamp(2.2rem,4.8vw,4.6rem);line-height:.98;letter-spacing:-.04em;font-weight:510;max-width:14ch}
+.shelf{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:max(var(--g),calc((100vw - var(--max))/2 + var(--g)));scrollbar-width:none;padding-bottom:8px}
+.shelf::-webkit-scrollbar{display:none}
+.card{position:relative;flex:0 0 min(80vw,390px);aspect-ratio:3/4.4;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:space-between;padding:26px;overflow:hidden;color:var(--ala);isolation:isolate;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.card:hover{transform:translateY(-8px)}
+.card .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.card:hover .bg{transform:scale(1.05)}
+.card .wash{position:absolute;inset:0;z-index:-1}
+.c-ink{background:var(--obs)}.c-put{background:var(--put);color:var(--ink)}.c-scar{background:var(--scar)}
+.c-photo .wash{background:linear-gradient(to top,rgba(17,19,21,.92),rgba(17,19,21,.25) 70%)}
+.c-photo.g .bg{filter:grayscale(1) contrast(1.1)}
+.c-scar-photo .wash{background:var(--scar);mix-blend-mode:multiply}
+.c-scar-photo .bg{filter:grayscale(1) contrast(1.2)}
+.card .top{display:flex;justify-content:space-between}
+.card .n{font-size:clamp(3.6rem,6vw,5.6rem);letter-spacing:-.05em;line-height:.9;font-weight:400}
+.card .n i{font-style:normal;opacity:.65}
+.card h3{font-size:1.375rem;line-height:1.18;letter-spacing:-.02em;font-weight:510;margin-top:1rem;max-width:20ch}
+.card .u{margin-top:.5rem;opacity:.85;font-size:.9375rem}
+.card .rings{position:absolute;z-index:-1;right:-30%;top:-8%;width:100%;color:var(--ala);opacity:.55}
+.card .rings circle{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+
+/* insights */
+.ins{padding-block:clamp(40px,6vw,90px) clamp(90px,11vw,150px)}
+.ins-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:clamp(16px,2vw,28px)}
+.post .pic{overflow:hidden;aspect-ratio:4/3;background:var(--put)}
+.post:first-child .pic{aspect-ratio:4/4.4}
+.post .pic img{width:100%;height:100%;object-fit:cover;transition:transform 1s cubic-bezier(.2,.7,.2,1)}
+.post:hover .pic img{transform:scale(1.05)}
+.post .mono{margin-top:1.1rem;color:var(--scar)}
+.post h3{font-size:clamp(1.25rem,1.7vw,1.6rem);line-height:1.15;letter-spacing:-.025em;font-weight:510;margin-top:.5rem;max-width:24ch}
+.post:first-child h3{font-size:clamp(1.6rem,2.4vw,2.3rem)}
+
+/* footer */
+.foot{background:var(--obs);color:var(--ala);padding-top:clamp(80px,10vw,140px);overflow:hidden;position:relative}
+.talk{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap}
+.talk h2{font-size:clamp(2.4rem,6.2vw,6.2rem);line-height:.96;letter-spacing:-.045em;font-weight:510;max-width:13ch}
+.talk h2 span{color:var(--scar)}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding-block:clamp(48px,6vw,90px) clamp(40px,5vw,70px);border-top:1px solid #2a2d30;margin-top:clamp(48px,6vw,90px);font-size:.9375rem;color:rgba(251,251,249,.72)}
+.cols h4{margin:0 0 1rem;font-weight:400;color:rgba(251,251,249,.5)}
+.cols li+li{margin-top:.5rem}.cols a:hover{color:#fff}
+.giant{display:block;width:calc(100% - 2*var(--g));margin:clamp(24px,4vw,56px) auto -7.5%}
+.legal{position:relative;z-index:2;display:flex;justify-content:space-between;padding-block:22px;color:rgba(251,251,249,.5);font-size:.8125rem}
+
+@media (max-width:900px){
+  .nav ul{display:none}
+  .hero-row{flex-direction:column;align-items:flex-start}
+  .burst{width:92vw;right:-22vw;top:34%}
+  .xp-grid,.res-grid,.ins-grid{grid-template-columns:1fr}
+  .xp-pics{display:none}.xp-row p{max-height:9em;opacity:1;margin-top:.7rem}.xp-row{color:var(--ink)}
+  .cols{grid-template-columns:1fr 1fr}
+  .sec-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <video autoplay muted loop playsinline preload="auto" poster="../assets/img/hero-voice.jpg" aria-hidden="true"><source src="../assets/video/hero.mp4" type="video/mp4"></video>
+  <div class="tint"></div><div class="fade"></div>
+  <div class="burst" aria-hidden="true">
+    <svg viewBox="-300 -300 600 600" class="ripple"><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/></svg>
+    <div class="core"></div><div class="dot"></div>
+  </div>
+  <div class="shell nav">
+    <a href="#"><img src="../assets/img/skot-logo-light.png" alt="SKOT Communications"></a>
+    <ul><li><a href="#">About</a></li><li><a href="#xp">Expertise</a></li><li><a href="#cases">Case studies</a></li><li><a href="#ins">Insights</a></li><li><a href="#">Programmes</a></li></ul>
+    <a class="btn btn-w" href="#talk">Speak with advisory</a>
+  </div>
+  <div class="shell hero-body">
+    <h1>Find your voice.<em>Speak to your people.</em></h1>
+    <div class="hero-row">
+      <p>Strategic communications and reputation consultancy for organisations across Sub-Saharan Africa.</p>
+      <div class="hero-cta"><a class="btn btn-w" href="#talk">Speak with our advisory team <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-o" href="#xp">Explore our expertise</a></div>
+      <div class="scroll mono"><span>Scroll</span><i></i></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip marquee"><div class="marquee-track">
+  <span>Corporate &amp; Brand Communications</span><span>Public Affairs &amp; Advocacy</span><span>Digital &amp; Creative Strategy</span><span>Crisis &amp; Reputation Management</span><span>Corporate &amp; Brand Communications</span><span>Public Affairs &amp; Advocacy</span><span>Digital &amp; Creative Strategy</span><span>Crisis &amp; Reputation Management</span>
+</div></div>
+
+<section class="state"><div class="shell">
+  <p class="mono rv">What we do</p>
+  <p class="wf">We advise organisations on reputation, stakeholders and influence, then deliver the communications strategy and execution that make every message count.</p>
+  <a class="lnk rv" href="#cases">See our work <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+</div></section>
+
+<section class="xp" id="xp"><div class="shell"><div class="xp-grid" data-x>
+  <ul class="xp-list">
+    <li class="xp-row" data-i="0" tabindex="0"><span class="mono">01</span><h2>Corporate &amp; Brand Communications</h2><span class="go"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M5 4h7v7"/></svg></span><p>Strong reputations and enduring brands are built on a clear sense of purpose, positioning and voice.</p></li>
+    <li class="xp-row" data-i="1" tabindex="0"><span class="mono">02</span><h2>Public Affairs &amp; Advocacy</h2><span class="go"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M5 4h7v7"/></svg></span><p>Influence built on a clear understanding of the stakeholders, policies and environments that shape your operating landscape.</p></li>
+    <li class="xp-row" data-i="2" tabindex="0"><span class="mono">03</span><h2>Digital &amp; Creative Strategy</h2><span class="go"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M5 4h7v7"/></svg></span><p>Campaigns and content that carry your narrative across the channels your audiences actually use.</p></li>
+    <li class="xp-row" data-i="3" tabindex="0"><span class="mono">04</span><h2>Crisis &amp; Reputation Management</h2><span class="go"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12L12 4M5 4h7v7"/></svg></span><p>Preparation, response and recovery, so a difficult moment doesn't define the organisation.</p></li>
+  </ul>
+  <div class="xp-pics" aria-hidden="true">
+    <img data-p="0" src="../assets/img/exp-corporate.jpg" alt=""><img data-p="1" src="../assets/img/exp-public.jpg" alt=""><img data-p="2" src="../assets/img/exp-digital.jpg" alt=""><img data-p="3" src="../assets/img/exp-crisis.jpg" alt="">
+    <i class="m m1"></i><i class="m m2"></i><i class="m m3"></i><i class="m m4"></i>
+  </div>
+</div></div></section>
+
+<section class="res"><div class="ring" aria-hidden="true"></div><div class="shell res-grid">
+  <div>
+    <p class="mono rv" style="margin-bottom:1.6rem">Recent results</p>
+    <h2 class="rv">Proof, not promises.</h2>
+    <p class="lead rv">Results from live campaigns, measured across print, broadcast, online and social.</p>
+    <a class="lnk rv" href="#cases">Read the case studies <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+  <ul class="led">
+    <li><b data-count="526" data-unit="M" data-plus="1">526M<i>+</i></b><span>Estimated reach</span></li>
+    <li><b data-count="105">105</b><span>Media mentions</span></li>
+    <li><b data-count="21.87" data-dec="2" data-unit="M">21.87M</b><span>Impressions</span></li>
+    <li><b data-count="45.8" data-dec="1" data-unit="M" data-plus="1">45.8M<i>+</i></b><span>Estimated reach</span></li>
+  </ul>
+</div></section>
+
+<section class="cases" id="cases">
+  <div class="shell sec-head"><h2 class="rv">Strategic discipline, in practice.</h2><a class="btn btn-k rv" href="#">All case studies <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <div class="shelf">
+    <a class="card c-ink" href="#"><svg class="rings" viewBox="-100 -100 200 200" aria-hidden="true"><circle r="30"/><circle r="52"/><circle r="74"/><circle r="96"/></svg>
+      <div class="top mono"><span>Digital</span><span>Technology</span></div>
+      <div><div class="n">21.87M</div><h3>Driving digital engagement for a multi-city technology platform</h3><p class="u">GITEX Nigeria · Impressions</p></div></a>
+    <a class="card c-photo g" href="#"><img class="bg" src="../assets/img/exp-public.jpg" alt=""><div class="wash"></div>
+      <div class="top mono"><span>Corporate reputation</span><span>Energy</span></div>
+      <div><div class="n">105</div><h3>Turning an indigenous growth milestone into an industry story</h3><p class="u">Tamrose · Media mentions</p></div></a>
+    <a class="card c-scar-photo" href="#"><img class="bg" src="../assets/img/exp-corporate.jpg" alt=""><div class="wash"></div>
+      <div class="top mono"><span>Public affairs</span><span>Leadership</span></div>
+      <div><div class="n">1M<i>+</i></div><h3>Establishing a new voice in Nigeria's leadership conversation</h3><p class="u">Africa Leadership Initiative · Reach</p></div></a>
+    <a class="card c-put" href="#"><div class="top mono"><span>Consumer</span><span>Food</span></div>
+      <div><div class="n">526M<i>+</i></div><h3>Turning local dairy investment into a national conversation</h3><p class="u" style="opacity:.78">Arla Foods · Estimated reach</p></div></a>
+    <a class="card c-ink" href="#"><svg class="rings" viewBox="-100 -100 200 200" aria-hidden="true"><circle r="30"/><circle r="52"/><circle r="74"/><circle r="96"/></svg>
+      <div class="top mono"><span>Financial</span><span>Banking</span></div>
+      <div><div class="n">45.8M<i>+</i></div><h3>Making banking recapitalisation matter beyond the financial sector</h3><p class="u">Agusto &amp; Co. · Estimated reach</p></div></a>
+  </div>
+</section>
+
+<section class="ins" id="ins"><div class="shell">
+  <div class="sec-head"><h2 class="rv">Thinking worth sharing.</h2><a class="lnk rv" href="#">All insights <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <div class="ins-grid">
+    <a class="post rv" href="#"><div class="pic"><img src="../assets/img/insights/crisis-signals-every-business-should-watch-preparing-befor.jpg" alt=""></div><p class="mono">Crisis communications</p><h3>Crisis signals every business should watch before they escalate</h3></a>
+    <a class="post rv" style="--d:.08s" href="#"><div class="pic"><img src="../assets/img/insights/finding-the-right-voice-in-a-noisy-world.jpg" alt=""></div><p class="mono">Brand voice</p><h3>Finding the right voice in a noisy world</h3></a>
+    <a class="post rv" style="--d:.16s" href="#"><div class="pic"><img src="../assets/img/insights/2026-glass-house-pr-report-the-state-of-pr-in-africa.jpg" alt=""></div><p class="mono">Research</p><h3>The 2026 Glass House PR report: the state of PR in Africa</h3></a>
+  </div>
+</div></section>
+
+<footer class="foot" id="talk">
+  <div class="shell">
+    <div class="talk"><h2 class="rv">Let's shape what they say<span>.</span></h2><a class="btn btn-w rv" href="mailto:info@skotcomms.com">info@skotcomms.com <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+    <div class="cols">
+      <div><h4 class="mono">Expertise</h4><ul><li><a href="#">Corporate &amp; Brand</a></li><li><a href="#">Public Affairs</a></li><li><a href="#">Digital &amp; Creative</a></li><li><a href="#">Crisis &amp; Reputation</a></li></ul></div>
+      <div><h4 class="mono">Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Programmes</a></li><li><a href="#">Case studies</a></li><li><a href="#">Insights</a></li></ul></div>
+      <div><h4 class="mono">Visit</h4><p>4th Floor, NIJ House<br>20 Adeyemo Alakija<br>Victoria Island, Lagos</p></div>
+      <div><h4 class="mono">Contact</h4><p>+234 902 000 0677<br>info@skotcomms.com</p></div>
+    </div>
+  </div>
+  <div class="shell legal"><span>© 2026 SKOT Communications</span><span>Lagos · Sub-Saharan Africa</span></div>
+  <img class="giant" src="../assets/img/skot-mark-light.png" alt="SKOT">
+</footer>
+<script src="shared.js"></script>
+</body>
+</html>

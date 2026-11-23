@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Option C · Control room — SKOT Communications</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400..700&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* OPTION C · CONTROL ROOM
+   Mobbin references: WRITER (portrait inside a radiating burst, stats flanking), Railway (split-flap counter ledger),
+   YLLW (full-bleed photograph with a service accordion floating over it), Sprout (hairline-divided stat band). */
+:root{--ala:#FBFBF9;--obs:#0E1012;--obs2:#16181B;--line:#2A2D31;--mut:rgba(251,251,249,.74);--scar:#D6001C;--max:1400px;--g:clamp(20px,4vw,56px);--lit:#FBFBF9;--dim:rgba(251,251,249,.2)}
+body{background:var(--obs);color:var(--ala)}
+.shell{max-width:var(--max);margin-inline:auto;padding-inline:var(--g)}
+.btn{display:inline-flex;align-items:center;gap:.6rem;height:48px;padding:0 1.5rem;border-radius:999px;font-weight:510;transition:transform .25s,background .25s,color .25s,border-color .25s}
+.btn:hover{transform:translateY(-2px)}
+.btn-s{background:var(--scar);color:#fff}.btn-s:hover{background:#ec0a26}
+.btn-w{background:var(--ala);color:var(--obs)}
+.btn-g{border:1px solid rgba(251,251,249,.35)}.btn-g:hover{border-color:var(--ala)}
+.lnk{display:inline-flex;gap:.5rem;align-items:center;font-weight:510;border-bottom:1px solid currentColor;padding-bottom:2px}
+.arr{width:1em;height:1em;transition:transform .25s}.lnk:hover .arr,.btn:hover .arr{transform:translateX(4px)}
+.tag{display:inline-flex;align-items:center;gap:.6rem;color:var(--mut)}
+.tag::before{content:"";width:8px;aspect-ratio:1;border-radius:50%;background:var(--scar);box-shadow:0 0 0 4px rgba(214,0,28,.25);animation:live 2s ease-in-out infinite}
+@keyframes live{50%{box-shadow:0 0 0 8px rgba(214,0,28,0)}}
+
+.bar{position:sticky;top:0;z-index:30;background:rgba(14,16,18,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.bar .shell{display:flex;align-items:center;justify-content:space-between;height:74px}
+.bar img{height:40px;width:auto}
+.bar ul{display:flex;gap:2rem;font-weight:510}.bar ul a{opacity:.8;transition:opacity .2s}.bar ul a:hover{opacity:1}
+
+/* hero */
+.hero{position:relative;text-align:center;padding-block:clamp(60px,8vw,110px) clamp(40px,5vw,70px);overflow:hidden}
+.hero::before{content:"";position:absolute;left:50%;top:62%;width:140vmax;aspect-ratio:1;translate:-50% -50%;background:radial-gradient(closest-side,rgba(214,0,28,.30),rgba(214,0,28,.10) 38%,transparent 70%);pointer-events:none}
+.hero h1{position:relative;font-size:clamp(2.8rem,6.6vw,6.8rem);line-height:.96;letter-spacing:-.045em;font-weight:510;max-width:16ch;margin:1.6rem auto 0}
+.hero h1 em{font-style:normal;color:var(--mut);display:block}
+.hero .lede{position:relative;max-width:48ch;margin:1.6rem auto 0;font-size:1.1875rem;color:var(--mut)}
+.hero .cta{position:relative;display:flex;gap:12px;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+.stage{position:relative;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(16px,4vw,64px);margin-top:clamp(40px,6vw,80px)}
+.stage .side{text-align:left}
+.stage .side.r{text-align:right}
+.side b{display:block;font-size:clamp(3rem,6.5vw,6.5rem);font-weight:400;letter-spacing:-.05em;line-height:.9;font-variant-numeric:tabular-nums}
+.side b i{font-style:normal;color:var(--scar)}
+.side span{display:block;margin-top:.8rem;color:var(--mut);max-width:20ch}
+.side.r span{margin-left:auto}
+.orb{position:relative;width:clamp(240px,32vw,440px);aspect-ratio:1}
+.orb .ripple{position:absolute;inset:-60%;width:220%;height:220%;color:rgba(251,251,249,.55)}
+.orb .face{position:absolute;inset:0;border-radius:50%;overflow:hidden;border:clamp(6px,.9vw,12px) solid var(--scar);background:#000}
+.orb .face img{width:100%;height:100%;object-fit:cover;object-position:62% 24%;transform:scale(1.35);transform-origin:62% 24%}
+.orb .dot{position:absolute;left:50%;top:100%;width:clamp(10px,1.2vw,16px);aspect-ratio:1;border-radius:50%;background:#8A8780;translate:-50% 90%}
+
+/* ledger (split-flap) */
+.ledger{padding-block:clamp(40px,6vw,90px)}
+.board{background:var(--obs2);border:1px solid var(--line);border-radius:14px;padding:clamp(16px,2.4vw,32px)}
+.board-h{display:flex;justify-content:space-between;align-items:center;padding-bottom:18px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+.row{display:grid;grid-template-columns:minmax(120px,1fr) auto;align-items:center;gap:1rem;padding-block:clamp(10px,1.4vw,18px);border-bottom:1px dashed #25282c}
+.row:last-child{border-bottom:0}
+.row .k{color:var(--mut);letter-spacing:.14em}
+.flap{display:flex;gap:5px;justify-content:flex-end}
+.flap span{display:grid;place-items:center;width:clamp(26px,3.7vw,52px);height:clamp(38px,5.4vw,76px);background:#1D2024;border-radius:6px;font-family:"IBM Plex Mono",monospace;font-size:clamp(1.3rem,3.2vw,3rem);position:relative;box-shadow:inset 0 -1px 0 #0a0b0c}
+.flap span::after{content:"";position:absolute;left:0;right:0;top:50%;height:1px;background:#0a0b0c}
+.flap span.c{background:none;width:clamp(10px,1.4vw,20px);box-shadow:none}.flap span.c::after{display:none}
+.flap span.u{background:none;box-shadow:none;color:var(--scar);width:auto;padding-left:6px}.flap span.u::after{display:none}
+.board p.note{margin-top:14px;color:rgba(251,251,249,.66);font-size:.8125rem}
+
+/* services over photo */
+.svc{position:relative;min-height:clamp(560px,82vh,780px);overflow:hidden;isolation:isolate;display:flex;align-items:center}
+.svc .pics img{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;opacity:0;transform:scale(1.05);transition:opacity .8s,transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.svc .pics img.on{opacity:1;transform:none}
+.svc::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(14,16,18,.72),rgba(14,16,18,.38))}
+.svc-inner{width:100%;display:grid;grid-template-columns:1fr 520px;gap:2rem;padding-block:60px}
+.svc h2{align-self:end;font-size:clamp(2.4rem,5vw,5rem);line-height:.96;letter-spacing:-.04em;font-weight:510;max-width:10ch;text-shadow:0 2px 30px rgba(0,0,0,.35)}
+.panel{background:rgba(14,16,18,.86);backdrop-filter:blur(14px);border:1px solid rgba(251,251,249,.12);padding:12px 26px 26px}
+.acc{border-bottom:1px solid var(--line);cursor:pointer}
+.acc:last-of-type{border-bottom:0}
+.acc button{width:100%;display:flex;align-items:center;gap:1rem;padding-block:20px;text-align:left;font-size:1.3rem;font-weight:510;letter-spacing:-.02em;color:rgba(251,251,249,.55);transition:color .3s}
+.acc .mono{color:var(--scar)}
+.acc .plus{margin-left:auto;width:1.1rem;height:1.1rem;position:relative}
+.acc .plus::before,.acc .plus::after{content:"";position:absolute;left:0;right:0;top:50%;height:1.5px;background:currentColor;transition:transform .35s}
+.acc .plus::after{transform:rotate(90deg)}
+.acc.on button{color:var(--ala)}.acc.on .plus::after{transform:rotate(0)}
+.acc p{max-height:0;overflow:hidden;opacity:0;color:var(--mut);transition:max-height .5s,opacity .5s,padding .5s;padding-left:calc(2rem + 1rem)}
+.acc.on p{max-height:8em;opacity:1;padding-bottom:20px}
+.panel .btn{margin-top:14px}
+
+/* cases */
+.cases{padding-block:clamp(80px,10vw,150px) clamp(50px,6vw,80px)}
+.sec-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:clamp(30px,4.5vw,60px)}
+.sec-head h2{font-size:clamp(2.2rem,4.8vw,4.6rem);line-height:.98;letter-spacing:-.04em;font-weight:510;max-width:13ch}
+.shelf{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:max(var(--g),calc((100vw - var(--max))/2 + var(--g)));scrollbar-width:none}
+.shelf::-webkit-scrollbar{display:none}
+.cc{position:relative;flex:0 0 min(82vw,420px);scroll-snap-align:start;background:var(--obs2);border:1px solid var(--line);display:flex;flex-direction:column;transition:border-color .3s,transform .5s cubic-bezier(.2,.7,.2,1)}
+.cc:hover{border-color:var(--scar);transform:translateY(-6px)}
+.cc .im{aspect-ratio:16/10;overflow:hidden;position:relative;background:#000}
+.cc .im img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.8);transition:transform 1s cubic-bezier(.2,.7,.2,1),filter .6s}
+.cc:hover .im img{transform:scale(1.06);filter:grayscale(.2) brightness(.9)}
+.cc .im::after{content:"";position:absolute;inset:0;background:var(--scar);mix-blend-mode:multiply;opacity:.0;transition:opacity .5s}
+.cc .im .ring{position:absolute;inset:0;display:grid;place-items:center;color:var(--ala)}
+.cc .im .ring svg{width:70%;opacity:.55}.cc .im .ring circle{fill:none;stroke:currentColor;stroke-width:1;vector-effect:non-scaling-stroke}
+.cc .bd{padding:22px 24px 26px;display:flex;flex-direction:column;gap:1rem;flex:1}
+.cc .meta{display:flex;justify-content:space-between;color:var(--mut)}
+.cc b{font-size:clamp(3rem,4.8vw,4.6rem);font-weight:400;letter-spacing:-.05em;line-height:.9}
+.cc b i{font-style:normal;color:var(--scar)}
+.cc h3{font-size:1.25rem;line-height:1.2;letter-spacing:-.02em;font-weight:510;color:rgba(251,251,249,.92)}
+.cc .who{margin-top:auto;color:var(--mut);font-size:.9375rem;display:flex;justify-content:space-between}
+
+/* insights rows */
+.ins{padding-block:clamp(50px,6vw,90px) clamp(80px,10vw,150px)}
+.rowl a{display:grid;grid-template-columns:110px 1fr 10rem 2rem;gap:clamp(14px,2.4vw,36px);align-items:center;padding-block:20px;border-top:1px solid var(--line);transition:background .3s,padding .35s}
+.rowl a:last-child{border-bottom:1px solid var(--line)}
+.rowl a:hover{background:var(--obs2);padding-inline:18px}
+.rowl img{width:110px;aspect-ratio:4/3;object-fit:cover}
+.rowl h3{font-size:clamp(1.2rem,2vw,1.9rem);line-height:1.12;letter-spacing:-.025em;font-weight:510}
+.rowl .mono{color:var(--mut)}
+.rowl svg{width:1.4rem;transition:transform .3s,color .3s}.rowl a:hover svg{transform:translateX(6px);color:var(--scar)}
+
+/* CTA band + footer */
+.cta-band{background:var(--scar);position:relative;overflow:hidden;padding-block:clamp(70px,9vw,130px)}
+.cta-band .ripple{position:absolute;right:-10%;top:50%;width:min(70vw,780px);translate:0 -50%;color:rgba(251,251,249,.7)}
+.cta-band .in{position:relative}
+.cta-band h2{font-size:clamp(2.6rem,6.4vw,6.6rem);line-height:.94;letter-spacing:-.045em;font-weight:510;max-width:12ch}
+.cta-band .cta{display:flex;gap:12px;margin-top:2.2rem;flex-wrap:wrap}
+.cta-band .btn-g{border-color:rgba(251,251,249,.6)}
+.foot{padding-top:clamp(50px,6vw,90px);background:var(--obs)}
+.mail{display:inline-block;font-size:clamp(1.8rem,5.2vw,5.2rem);letter-spacing:-.04em;font-weight:510;line-height:1;border-bottom:2px solid var(--line);padding-bottom:.2em;transition:border-color .3s,color .3s}
+.mail:hover{border-color:var(--scar);color:var(--scar)}
+.cols{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;padding-block:clamp(44px,5vw,80px);font-size:.9375rem;color:var(--mut)}
+.cols h4{margin:0 0 1rem;font-weight:400;color:rgba(251,251,249,.62)}
+.cols li+li{margin-top:.5rem}.cols a:hover{color:#fff}
+.legal{display:flex;justify-content:space-between;padding-block:22px;border-top:1px solid var(--line);color:rgba(251,251,249,.66);font-size:.8125rem}
+
+@media (max-width:980px){
+  .bar ul{display:none}
+  .stage{grid-template-columns:1fr;text-align:center}.stage .side,.stage .side.r{text-align:center}.side span,.side.r span{margin-inline:auto}.orb{margin:20px auto 40px;order:-1}
+  .svc-inner{grid-template-columns:1fr}.svc h2{display:none}
+  .sec-head{flex-direction:column;align-items:flex-start}.cols{grid-template-columns:1fr 1fr}
+  .rowl a{grid-template-columns:84px 1fr 1.4rem}.rowl a .mono{display:none}.rowl img{width:84px}
+}
+</style>
+</head>
+<body>
+
+<header class="bar"><div class="shell">
+  <a href="#"><img src="../assets/img/skot-logo-light.png" alt="SKOT Communications"></a>
+  <ul><li><a href="#">About</a></li><li><a href="#svc">Expertise</a></li><li><a href="#cases">Case studies</a></li><li><a href="#ins">Insights</a></li><li><a href="#">Programmes</a></li></ul>
+  <a class="btn btn-s" href="#talk">Speak with advisory</a>
+</div></header>
+
+<section class="hero"><div class="shell">
+  <p class="mono tag">Strategic communications · Sub-Saharan Africa</p>
+  <h1>Find your voice. <em>Speak to your people.</em></h1>
+  <p class="lede">We advise on what to say, to whom and when, then deliver it across media, digital, events and government.</p>
+  <div class="cta"><a class="btn btn-s" href="#talk">Speak with our advisory team <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-g" href="#svc">Explore our expertise</a></div>
+  <div class="stage">
+    <div class="side"><b data-count="526" data-unit="M" data-plus="1">526M<i>+</i></b><span>Estimated reach on a single campaign</span></div>
+    <div class="orb" aria-hidden="true">
+      <svg class="ripple" viewBox="-300 -300 600 600"><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/></svg>
+      <div class="face"><img src="../assets/img/hero-voice.jpg" alt=""></div><i class="dot"></i>
+    </div>
+    <div class="side r"><b data-count="105">105</b><span>Media mentions, front pages included</span></div>
+  </div>
+</div></section>
+
+<section class="ledger"><div class="shell">
+  <div class="board">
+    <div class="board-h"><span class="mono tag">Campaign results · live ledger</span><span class="mono" style="color:var(--mut)">Verified · client campaigns</span></div>
+    <div class="row"><span class="k mono">Estimated reach</span><div class="flap" data-flap="526000000"></div></div>
+    <div class="row"><span class="k mono">Impressions</span><div class="flap" data-flap="21870000"></div></div>
+    <div class="row"><span class="k mono">Clicks</span><div class="flap" data-flap="790600"></div></div>
+    <div class="row"><span class="k mono">Media mentions</span><div class="flap" data-flap="105"></div></div>
+    <p class="note">Figures drawn from individual client campaigns. Each is reported on its case study.</p>
+  </div>
+</div></section>
+
+<section class="svc" id="svc"><div class="pics" data-x aria-hidden="true">
+  <img data-p="0" src="../assets/img/exp-corporate.jpg" alt=""><img data-p="1" src="../assets/img/exp-public.jpg" alt=""><img data-p="2" src="../assets/img/exp-digital.jpg" alt=""><img data-p="3" src="../assets/img/exp-crisis.jpg" alt="">
+</div>
+  <div class="shell svc-inner">
+    <h2>Four disciplines. One voice.</h2>
+    <div class="panel" id="acc">
+      <div class="acc on" data-i="0"><button><span class="mono">01</span>Corporate &amp; Brand<i class="plus"></i></button><p>Purpose, positioning and voice, aligned with business ambition across corporate, investor and internal audiences.</p></div>
+      <div class="acc" data-i="1"><button><span class="mono">02</span>Public Affairs &amp; Advocacy<i class="plus"></i></button><p>Stakeholder intelligence, government relations and policy engagement, so you have influence where decisions are made.</p></div>
+      <div class="acc" data-i="2"><button><span class="mono">03</span>Digital &amp; Creative Strategy<i class="plus"></i></button><p>Campaigns and content that carry your narrative across the channels your audiences actually use.</p></div>
+      <div class="acc" data-i="3"><button><span class="mono">04</span>Crisis &amp; Reputation<i class="plus"></i></button><p>Preparation, response and recovery, so one difficult moment doesn't define the organisation.</p></div>
+      <a class="btn btn-w" href="#">Explore expertise <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<section class="cases" id="cases">
+  <div class="shell sec-head"><h2 class="rv">Work that moved the room.</h2><a class="lnk rv" href="#">All case studies <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <div class="shelf">
+    <a class="cc" href="#"><div class="im"><img src="../assets/img/exp-digital.jpg" alt=""></div><div class="bd"><div class="meta mono"><span>Digital</span><span>Technology</span></div><b>21.87M</b><h3>Driving digital engagement for a multi-city technology platform</h3><p class="who"><span>GITEX Nigeria</span><span>Impressions</span></p></div></a>
+    <a class="cc" href="#"><div class="im"><img src="../assets/img/exp-public.jpg" alt=""></div><div class="bd"><div class="meta mono"><span>Corporate reputation</span><span>Energy</span></div><b>105</b><h3>Turning an indigenous growth milestone into an industry story</h3><p class="who"><span>Tamrose</span><span>Media mentions</span></p></div></a>
+    <a class="cc" href="#"><div class="im"><img src="../assets/img/exp-corporate.jpg" alt=""></div><div class="bd"><div class="meta mono"><span>Public affairs</span><span>Leadership</span></div><b>1M<i>+</i></b><h3>Establishing a new voice in Nigeria's leadership conversation</h3><p class="who"><span>Africa Leadership Initiative</span><span>Reach</span></p></div></a>
+    <a class="cc" href="#"><div class="im"><img src="../assets/img/exp-crisis.jpg" alt=""></div><div class="bd"><div class="meta mono"><span>Consumer</span><span>Food</span></div><b>526M<i>+</i></b><h3>Turning local dairy investment into a national conversation</h3><p class="who"><span>Arla Foods</span><span>Estimated reach</span></p></div></a>
+    <a class="cc" href="#"><div class="im"><img src="../assets/img/prog-elevate.jpg" alt=""></div><div class="bd"><div class="meta mono"><span>Financial</span><span>Banking</span></div><b>45.8M<i>+</i></b><h3>Making banking recapitalisation matter beyond the financial sector</h3><p class="who"><span>Agusto &amp; Co.</span><span>Estimated reach</span></p></div></a>
+  </div>
+</section>
+
+<section class="ins" id="ins"><div class="shell">
+  <div class="sec-head"><h2 class="rv">Insights.</h2><a class="lnk rv" href="#">All insights <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a></div>
+  <div class="rowl">
+    <a href="#"><img src="../assets/img/insights/crisis-signals-every-business-should-watch-preparing-befor.jpg" alt=""><h3>Crisis signals every business should watch before they escalate</h3><span class="mono">Crisis communications</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#"><img src="../assets/img/insights/finding-the-right-voice-in-a-noisy-world.jpg" alt=""><h3>Finding the right voice in a noisy world</h3><span class="mono">Brand voice</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    <a href="#"><img src="../assets/img/insights/2026-glass-house-pr-report-the-state-of-pr-in-africa.jpg" alt=""><h3>The 2026 Glass House PR report: the state of PR in Africa</h3><span class="mono">Research</span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</div></section>
+
+<section class="cta-band" id="talk">
+  <svg class="ripple" viewBox="-300 -300 600 600" aria-hidden="true"><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/><circle r="300"/></svg>
+  <div class="shell in"><p class="mono" style="margin-bottom:1.4rem">Start a conversation</p><h2>What do you need them to hear?</h2>
+  <div class="cta"><a class="btn btn-w" href="#">Speak with advisory <svg class="arr" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a><a class="btn btn-g" href="#">Our programmes</a></div></div>
+</section>
+
+<footer class="foot"><div class="shell">
+  <a class="mail" href="mailto:info@skotcomms.com">info@skotcomms.com</a>
+  <div class="cols">
+    <div><h4 class="mono">Expertise</h4><ul><li><a href="#">Corporate &amp; Brand</a></li><li><a href="#">Public Affairs</a></li><li><a href="#">Digital &amp; Creative</a></li><li><a href="#">Crisis &amp; Reputation</a></li></ul></div>
+    <div><h4 class="mono">Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Programmes</a></li><li><a href="#">Case studies</a></li><li><a href="#">Insights</a></li></ul></div>
+    <div><h4 class="mono">Visit</h4><p>4th Floor, NIJ House<br>20 Adeyemo Alakija<br>Victoria Island, Lagos</p></div>
+    <div><h4 class="mono">Contact</h4><p>+234 902 000 0677<br>info@skotcomms.com</p></div>
+  </div>
+  <div class="legal"><span>© 2026 SKOT Communications</span><span>Lagos · Sub-Saharan Africa</span></div>
+</div></footer>
+
+<script src="shared.js"></script>
+<script>
+/* split-flap digits: final value is in the data attribute; tiles roll up from zero when seen */
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function fmt(n){return Math.round(n).toLocaleString('en')}
+  function paint(el,s){el.innerHTML=s.split('').map(function(c){return c===','?'<span class="c">,</span>':'<span>'+c+'</span>'}).join('')}
+  document.querySelectorAll('[data-flap]').forEach(function(el){
+    var to=+el.dataset.flap;paint(el,fmt(to));
+    if(reduce)return;
+    var o=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;o.disconnect();
+      var t0=performance.now(),d=2200;(function f(t){var p=Math.min(1,(t-t0)/d),v=to*(1-Math.pow(1-p,4));paint(el,fmt(v));if(p<1)requestAnimationFrame(f);else paint(el,fmt(to))})(t0)})},{threshold:.5});o.observe(el);
+  });
+  /* services accordion drives the photograph */
+  var acc=document.querySelectorAll('.acc'),pics=document.querySelectorAll('.svc .pics img');
+  function set(i){acc.forEach(function(a){a.classList.toggle('on',a.dataset.i==i)});pics.forEach(function(p){p.classList.toggle('on',p.dataset.p==i)})}
+  acc.forEach(function(a){a.querySelector('button').addEventListener('click',function(){set(a.dataset.i)});a.addEventListener('mouseenter',function(){set(a.dataset.i)})});
+  set(0);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<section class="phero">
+  <div class="shell" style="padding:0">
+    <div class="phero-grid">
+      <div class="phero-main">
+        <span class="eyebrow">Our work</span>
+        <h1 class="h1">Strategic discipline, applied to the moments that matter.</h1>
+      </div>
+      <div class="phero-side">
+        <p class="lede">We partner with clients to communicate with purpose, act with clarity and build stronger relationships with the stakeholders who shape their success.</p>
+        <a class="btn btn-solid" href="#cases">Read the case studies {{ARROW}}</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band">
+  <div class="shell" style="padding:0">{{RESULT_STATS}}</div>
+</section>
+
+<div class="index-grid" id="cases">
+  <aside class="index-rail">
+    <div class="index-rail-sticky">
+      <h2 class="h3">Browse the work.</h2>
+      <div class="search">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg>
+        <input type="search" id="caseSearch" placeholder="Search case studies" aria-label="Search case studies">
+      </div>
+      <p class="label" style="margin-top:1.75rem">Filter by discipline</p>
+      <div class="filters" id="caseFilters">{{FILTERS}}</div>
+      <p class="rail-count"><span id="caseCount">6</span> results</p>
+    </div>
+  </aside>
+  <div class="index-main">
+    <div class="card-grid" id="caseGrid">{{ALL_CASES}}</div>
+    <p class="rail-count" id="caseEmpty" hidden style="padding:2rem 0">No case studies match that filter.</p>
+  </div>
+</div>
