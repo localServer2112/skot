@@ -241,13 +241,13 @@ PROGRAMMES = [
     {
         "slug": "impact-academy",
         "name": "SKOT Impact Academy",
-        "badge": "Tuition-free six-week course",
-        "lede": "A tuition-free six-week course for emerging African communications talent.",
-        "body": "SKOT Impact Academy is SKOT Communications’ social impact learning platform for early-career public relations and communications professionals. The flagship tuition-free six-week course supports professionals with one to two years of experience through real-world training, local and international facilitator perspectives, in-depth case studies, network-building and a strong understanding of both local and global communications contexts.",
+        "badge": "Free six-week PR Foundation Course",
+        "lede": "Build a strong foundation in PR and communications.",
+        "body": "SKOT Impact Academy is SKOT Communications’ CSR initiative, created to nurture the next generation of storytellers. We invest in people with the passion and potential to make a difference through communications.",
         "image": "assets/img/academy/full-room.jpg",
         "alt": "A full cohort of early-career communications professionals in the SKOT Impact Academy classroom",
         "cta": "Apply for the next cohort",
-        "facts": [("6", "weeks"), ("Tuition-free", "no cost to participants"), ("1–2 yrs", "experience level")],
+        "facts": [("6 weeks", "Duration"), ("In-person", "Format"), ("Free", "Based on eligibility"), ("Certificate", "Of participation on completion")],
     },
     {
         "slug": "elevate",
@@ -262,19 +262,21 @@ PROGRAMMES = [
     },
 ]
 
-# Impact Academy curriculum: nine (title, optional one-line description) pairs, in order.
-# Leave empty to hide the modules section.
-ACADEMY_MODULES = [  # DEMO PLACEHOLDERS: replace with the real curriculum
-    ("Foundations of strategic communication", "How communication supports organisational goals, and where PR fits."),
-    ("Understanding audiences and stakeholders", "Mapping who matters, what they need and how they listen."),
-    ("Messaging and storytelling", "Turning a position into clear, credible and memorable messages."),
-    ("Media relations in practice", "Pitching, building journalist relationships and handling interviews."),
-    ("Digital and social communications", "Building presence, content and community across platforms."),
-    ("Writing for impact", "Press releases, statements, speeches and briefs that get read."),
-    ("Crisis and reputation management", "Preparing for, responding to and recovering from a crisis."),
-    ("Measurement and evaluation", "Setting objectives and showing what communications delivers."),
-    ("Career building and professional networks", "Positioning yourself, finding mentors and growing in the industry."),
+# Impact Academy PR Foundation Course, "What you'll learn" (source: SKOT Impact Academy.docx).
+ACADEMY_LEARN = [
+    "Introduction to marketing, advertising, PR, digital media and branding",
+    "PR strategy, messaging and stakeholder management",
+    "Storytelling and content for different audiences",
+    "Media relations and digital media",
+    "PR campaigns and crisis management",
+    "Reputation management, personal branding and presentation skills",
+    "Group exercise and team presentation",
 ]
+ACADEMY_WHO = ("Early-career communications professionals with 1–2 years of experience in business, communications "
+               "or a related field, in-house or agency (NYSC completion).")
+ACADEMY_COURSE = ("Tailored for early-career professionals (1–2 years’ experience) seeking foundational and industry-relevant "
+                  "skills. This flagship free 6-week course demonstrates our dedication to nurturing talent from the ground up "
+                  "and fostering a more inclusive industry, providing practical, real-world training expertise.")
 
 MASTERCLASS = {
     "name": "Masterclass",

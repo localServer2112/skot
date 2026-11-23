@@ -190,15 +190,33 @@ def hero_rail():
             '</div>' % (links(False), links(True)))
 
 
+def client_logo(slug):
+    """(path, width, height) of assets/img/clients/<slug>.png, or None until a logo is dropped in."""
+    path = "assets/img/clients/%s.png" % slug
+    full = os.path.join(ROOT, path)
+    if not os.path.exists(full):
+        return None
+    with open(full, "rb") as f:
+        w, h = struct.unpack(">II", f.read(24)[16:24])
+    return path, w, h
+
+
+def case_mark(c):
+    """Case study hero panel: the client's logo, else its name set as a wordmark."""
+    logo = client_logo(c["slug"])
+    if logo:
+        return '<img class="case-logo" src="%s" alt="%s" width="%d" height="%d">' % (logo[0], html.escape(c["client"]), logo[1], logo[2])
+    return '<span class="mark mark--xl">%s</span>' % html.escape(c["client"])
+
+
 def client_rail():
-    """Home: clients who trust us, as a wordmark row linking to their case studies."""
+    """Home: clients who trust us, as a logo (or wordmark until one exists) linking to the case study."""
     def item(c):
         name = html.escape(c.get("panel_name") or c["client"])
-        logo = "assets/img/clients/%s.png" % c["slug"]
-        if os.path.exists(os.path.join(ROOT, logo)):  # drop a logo in assets/img/clients/<slug>.png to use it
-            w, h = struct.unpack(">II", open(os.path.join(ROOT, logo), "rb").read(24)[16:24])
+        logo = client_logo(c["slug"])
+        if logo:
             return ('<a class="trust-logo" href="%s" aria-label="%s"><img src="%s" alt="%s" width="%d" height="%d" '
-                    'loading="lazy" decoding="async"></a>' % (case_href(c), name, logo, name, w, h))
+                    'loading="lazy" decoding="async"></a>' % ((case_href(c), name) + (logo[0], name, logo[1], logo[2])))
         return '<a href="%s">%s</a>' % (case_href(c), name)
     return "".join(item(c) for c in D.CASES)
 
@@ -509,7 +527,7 @@ def main():
             page_body("_expertise.html", NUM=e["num"], TITLE=html.escape(e["title"]),
                       LEDE=html.escape(e["lede"]), BODY=html.escape(e["body"]), IMAGE=e["image"],
                       ALT=html.escape(e["alt"]), CAPS=caps_rows(e), RELATED=case_cards(rel),
-                      SIBLINGS=sibs, **T),
+                      **T),
             pagekey="expertise", active="expertise.html"))
 
     # ── Work ────────────────────────────────────────────────────────────────
@@ -543,7 +561,8 @@ def main():
             case_href(c), "%s — Case study — SKOT Communications" % c["client"], c["summary"],
             page_body("_case.html", DISCIPLINE=html.escape(c["discipline"]), TITLE=html.escape(c["title"]),
                       SUMMARY=html.escape(c["summary"]), CLIENT=html.escape(c["client"]),
-                      PANEL=PANELS[i % len(PANELS)], METRICS=metrics, PANEL_NAME=html.escape(c.get("panel_name", c["client"])),
+                      PANEL="panel-putty" if client_logo(c["slug"]) else PANELS[i % len(PANELS)],
+                      CASE_MARK=case_mark(c), METRICS=metrics, PANEL_NAME=html.escape(c.get("panel_name", c["client"])),
                       CHALLENGE='<p class="body-copy">%s</p>' % c["challenge"], APPROACH=approach,
                       IMPACT='<p class="body-copy">%s</p>' % c["impact"],
                       CONTRIBUTION=c["contribution"], NEXT_CASES=case_cards(nxt), **T),
@@ -572,17 +591,19 @@ def main():
         return ('<img class="%s" src="assets/img/academy/%s.jpg" alt="%s" loading="lazy" decoding="async" '
                 'style="object-position:%s">' % (cls, name, html.escape(alt), pos))
 
-    _pillars = [
-        ("Real-world training", "facilitator-presenting", "A facilitator presenting to a classroom of participants", "50% 40%"),
-        ("Local and international facilitator perspectives", "guest-speaker", "A guest facilitator speaking to the cohort with a microphone", "50% 22%"),
-        ("In-depth case studies", "cohort-attentive", "Cohort members listening closely during a session", "50% 40%"),
-        ("Network-building", "cohort-closeup", "Smiling cohort members in the front rows", "50% 35%"),
-        ("Local and global communications contexts", "classroom-zoom", "A classroom session with a live video link to a wider group", "40% 50%"),
+    _how = [
+        ("Practical exercises", "Build strategies and analyse real campaigns.", "cohort-attentive",
+         "Cohort members listening closely during a session", "50% 40%"),
+        ("Peer learning", "Guided group discussions with fellow early-career professionals.", "cohort-closeup",
+         "Smiling cohort members in the front rows", "50% 35%"),
+        ("Interactive workshops", "Led by industry practitioners, with role-play, scenario planning and live feedback.",
+         "facilitator-presenting", "A facilitator presenting to a classroom of participants", "50% 40%"),
     ]
     _pillar_html = "".join(
         '<li class="acad-pillar"><div class="acad-ph">%s</div>'
-        '<p class="acad-n">%02d</p><p class="h4">%s</p></li>' % (_ph(n, a, pos=pos), i + 1, t)
-        for i, (t, n, a, pos) in enumerate(_pillars))
+        '<p class="acad-n">%02d</p><p class="h4">%s</p><p class="acad-d">%s</p></li>'
+        % (_ph(n, a, pos=pos), i + 1, t, d)
+        for i, (t, d, n, a, pos) in enumerate(_how))
 
     _mosaic = [
         ("full-room", "The full cohort seated in the Academy classroom", "a1", "In session", "50% 50%"),
@@ -594,35 +615,36 @@ def main():
         for n, a, c, cap, pos in _mosaic)
 
     _mod_html = "".join(
-        '<li class="acad-mod"><span class="acad-mod-n">%02d</span><h3 class="h4">%s</h3>%s</li>'
-        % (i + 1, html.escape(t), '<p class="acad-mod-d">%s</p>' % html.escape(d) if d else "")
-        for i, (t, d) in enumerate(D.ACADEMY_MODULES))
-    _modules_section = (
-        '<section class="sec acad-modules"><div class="shell">'
-        '<div class="sec-split"><div><p class="label">The curriculum</p></div>'
-        '<div><h2 class="h2">The %s modules.</h2><ol class="acad-mods">%s</ol></div></div>'
-        '</div></section>' % ({9: "nine"}.get(len(D.ACADEMY_MODULES), len(D.ACADEMY_MODULES)), _mod_html)) if D.ACADEMY_MODULES else ""
+        '<li class="acad-mod"><span class="acad-mod-n">%02d</span><h3 class="h4">%s</h3></li>' % (i + 1, html.escape(t))
+        for i, t in enumerate(D.ACADEMY_LEARN))
 
     academy_section = (
+        '<section class="sec acad-who"><div class="shell">'
+        '<div class="sec-split"><div><p class="label">Who it&rsquo;s for</p></div>'
+        '<div><p class="h4">%s</p></div></div>'
+        '</div></section>'
+        '<section class="sec acad-modules"><div class="shell">'
+        '<div class="sec-split"><div><p class="label">What you&rsquo;ll learn</p></div>'
+        '<div><h2 class="h2">The PR Foundation Course.</h2>'
+        '<p class="body-copy" style="margin-top:1.25rem;max-width:62ch">%s</p><ol class="acad-mods">%s</ol></div></div>'
+        '</div></section>'
         '<section class="sec acad-how"><div class="shell">'
-        '<div class="sec-split"><div><p class="label">How the six weeks work</p></div>'
-        '<div><h2 class="h2">Learning that happens in the room, with the people doing the work.</h2></div></div>'
+        '<div class="sec-split"><div><p class="label">How you&rsquo;ll learn</p></div>'
+        '<div><h2 class="h2">Practical, shared and led by practitioners.</h2></div></div>'
         '<ol class="acad-pillars">%s</ol></div></section>'
-        '%s'
         '<section class="acad-band"><div class="shell">'
         '<div class="acad-head"><p class="label label--light">Inside the Academy</p>'
         '<h2 class="h2">The cohorts, in the room.</h2></div>'
         '<div class="acad-mosaic">%s</div></div></section>'
         '<section class="acad-cta"><div class="acad-cta-ph">%s</div>'
         '<div class="acad-cta-body"><p class="label label--light">Next cohort</p>'
-        '<h2 class="h2">Tuition-free. Six weeks. Built for emerging African communications talent.</h2>'
+        '<h2 class="h2">Start your PR journey with SKOT Impact Academy.</h2>'
         '<a class="btn btn-light" href="contact.html">Apply for the next cohort %s</a></div></section>'
-        % (_pillar_html, _modules_section, _mosaic_html, _ph("embrace", "Two members of the Academy community sharing an embrace", pos="50% 30%"), ARROW))
+        % (html.escape(D.ACADEMY_WHO), html.escape(D.ACADEMY_COURSE), _mod_html, _pillar_html, _mosaic_html,
+           _ph("embrace", "Two members of the Academy community sharing an embrace", pos="50% 30%"), ARROW))
 
     for p in D.PROGRAMMES:
-        facts = stat_cells(p["facts"])
-        sibs = "".join('<a class="btn btn-ghost btn-sm" href="%s">%s</a>' % (prog_href(o), o["name"])
-                       for o in D.PROGRAMMES if o["slug"] != p["slug"])
+        facts = stat_cells(p["facts"], cols=2 if p["slug"] == "impact-academy" else None)
         built.append(render(
             prog_href(p), "%s — SKOT Communications" % p["name"], p["lede"],
             page_body("_programme.html", SLUG=p["slug"], BADGE=html.escape(p["badge"]), NAME=html.escape(p["name"]),
