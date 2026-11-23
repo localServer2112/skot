@@ -152,9 +152,9 @@
     sync();
   });
 
-  /* Results and stat strips: count each figure up once, when it first scrolls into view.
-     The final value is already in the markup, so no-JS and reduced-motion
-     readers just see it. */
+  /* Results and stat strips: count each figure up whenever its section comes into focus, and
+     again every time it comes back. It resets once fully out of view, so each return starts from
+     zero. The final value is already in the markup, so no-JS and reduced-motion readers just see it. */
   var counters = all('[data-count]');
   if (counters.length && !reduced && 'IntersectionObserver' in window) {
     var paint = function (el, n) {
@@ -162,24 +162,29 @@
       var txt = n.toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec, useGrouping: false });
       el.innerHTML = txt + el.dataset.unit + (el.dataset.plus ? '<i>+</i>' : '');
     };
+    var stop = function (el) { if (el._raf) { cancelAnimationFrame(el._raf); el._raf = 0; } };
     var run = function (el) {
+      stop(el);
       var to = parseFloat(el.dataset.count), t0 = null, dur = 1500;
       var tick = function (t) {
         if (t0 === null) t0 = t;
         var k = Math.min(1, (t - t0) / dur);
         paint(el, to * (1 - Math.pow(1 - k, 3)));
-        if (k < 1) requestAnimationFrame(tick); else paint(el, to);
+        if (k < 1) el._raf = requestAnimationFrame(tick); else { el._raf = 0; paint(el, to); }
       };
       paint(el, 0);
-      requestAnimationFrame(tick);
+      el._raf = requestAnimationFrame(tick);
     };
     var cio = new IntersectionObserver(function (entries) {
       entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        cio.unobserve(en.target);
-        run(en.target);
+        var el = en.target;
+        if (en.intersectionRatio >= 0.6) {
+          if (!el._in) { el._in = true; run(el); }
+        } else if (en.intersectionRatio === 0) {
+          el._in = false; stop(el); paint(el, 0);
+        }
       });
-    }, { threshold: 0.6 });
+    }, { threshold: [0, 0.6] });
     counters.forEach(function (el) { cio.observe(el); });
   }
 

@@ -476,17 +476,16 @@ def programme_duos(limit=None):
     return "".join(out)
 
 
-def programme_strip(frames=7):
+def programme_strip():
     """Home: the scattered photo band under the programmes panel.
 
-    Purely decorative, so it is hidden from assistive tech. There are only two
-    programme photographs, so they alternate across the frames; drop more images
-    into D.PROGRAMMES and the band picks them up.
+    Purely decorative, so it is hidden from assistive tech. It shows SKOT Impact Academy
+    cohort photographs only, one frame each.
     """
-    shots = [p["image"] for p in D.PROGRAMMES]
+    shots = ["full-room", "cohort-closeup", "guest-speaker", "cohort-applause",
+             "cohort-attentive", "cohort-kente", "facilitator-presenting"]
     return '<div class="pg-strip" aria-hidden="true">%s</div>' % "".join(
-        '<img src="%s" alt="" loading="lazy">' % shots[i % len(shots)]
-        for i in range(frames))
+        '<img src="assets/img/academy/%s.jpg" alt="" loading="lazy">' % n for n in shots)
 
 
 def main():
