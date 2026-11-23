@@ -7,7 +7,7 @@ Page bodies live in site/pages/*.html and are injected into site/layout.html.
 Repeated components (nav, cards, stat cells) are generated here from site/data.py
 so the six case studies have exactly one source of truth.
 """
-import os, re, sys, html
+import os, re, struct, sys, html
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.join(ROOT, "site"))
@@ -192,8 +192,15 @@ def hero_rail():
 
 def client_rail():
     """Home: clients who trust us, as a wordmark row linking to their case studies."""
-    return "".join('<a href="%s">%s</a>' % (case_href(c), html.escape(c.get("panel_name") or c["client"]))
-                   for c in D.CASES)
+    def item(c):
+        name = html.escape(c.get("panel_name") or c["client"])
+        logo = "assets/img/clients/%s.png" % c["slug"]
+        if os.path.exists(os.path.join(ROOT, logo)):  # drop a logo in assets/img/clients/<slug>.png to use it
+            w, h = struct.unpack(">II", open(os.path.join(ROOT, logo), "rb").read(24)[16:24])
+            return ('<a class="trust-logo" href="%s" aria-label="%s"><img src="%s" alt="%s" width="%d" height="%d" '
+                    'loading="lazy" decoding="async"></a>' % (case_href(c), name, logo, name, w, h))
+        return '<a href="%s">%s</a>' % (case_href(c), name)
+    return "".join(item(c) for c in D.CASES)
 
 
 def expertise_tabs():

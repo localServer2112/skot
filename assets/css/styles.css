@@ -356,6 +356,8 @@ body[data-page="programmes"] .nav-desktop [data-nav="programmes"],
   color:var(--ink-56); transition:color .2s var(--ease);
 }
 .trust-row a:hover{color:var(--ink)}
+.trust-row a.trust-logo{display:flex; align-items:center}
+.trust-logo img{width:auto; height:auto; max-height:clamp(3.25rem,5.5vw,4.5rem); max-width:clamp(7rem,13vw,10rem); display:block}
 
 /* Full-bleed media + spectrum stripe */
 .bleed{position:relative; border-bottom:1px solid var(--line)}
