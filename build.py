@@ -653,7 +653,7 @@ def main():
                         'aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div></div>'
                         % (p["image"], html.escape(p.get("alt") or p["title"])))
             else:
-                hero = ('<div class="bleed"><div class="post-media--blank" style="height:clamp(160px,20vw,240px)">'
+                hero = ('<div class="bleed"><div class="post-media--blank" style="height:clamp(10rem,20vw,15rem)">'
                         '<span>SKOT</span></div><div class="spectrum" aria-hidden="true">'
                         '<i></i><i></i><i></i><i></i><i></i></div></div>')
             rel = [o for o in POSTS if o["slug"] != p["slug"]][:3]
