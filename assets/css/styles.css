@@ -325,7 +325,7 @@ body[data-page="programmes"] .nav-desktop [data-nav="programmes"],
   position:relative; z-index:3; width:100%;
   padding:0 calc(var(--gutter) - var(--pad)) clamp(2.25rem,6vw,96px);
 }
-.vhero .h1{color:var(--on-dark); max-width:20ch; font-size:clamp(2.1rem,4vw,3.25rem)}
+.vhero .h1{color:var(--on-dark); max-width:20ch}
 .vhero .h1 .dots{color:var(--scarlet)}
 .vhero-cta{display:flex; flex-wrap:wrap; gap:.6rem; margin-top:clamp(1.4rem,2.6vw,2.25rem)}
 .vhero-rail{
