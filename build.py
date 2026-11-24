@@ -621,7 +621,9 @@ def main():
 
     _mod_html = "".join(
         '<li class="acad-mod"><span class="acad-mod-n">%02d</span><h3 class="h4">%s</h3></li>' % (i + 1, html.escape(t))
-        for i, t in enumerate(D.ACADEMY_LEARN))
+        for i, t in enumerate(D.ACADEMY_LEARN)) + (
+        '<li class="acad-mod acad-mod--cta"><a class="alink card-link" href="contact.html">'
+        'Apply for the next cohort %s</a></li>' % ARROW)
 
     academy_section = (
         '<section class="sec acad-who"><div class="shell">'
@@ -631,7 +633,8 @@ def main():
         '<section class="sec acad-modules"><div class="shell">'
         '<div class="sec-split"><div><p class="label">What you&rsquo;ll learn</p></div>'
         '<div><h2 class="h2">The PR Foundation Course.</h2>'
-        '<p class="body-copy" style="margin-top:1.25rem;max-width:62ch">%s</p><ol class="acad-mods">%s</ol></div></div>'
+        '<p class="body-copy" style="margin-top:1.25rem;max-width:62ch">%s</p></div></div>'
+        '<ol class="acad-mods">%s</ol>'
         '</div></section>'
         '<section class="sec acad-how"><div class="shell">'
         '<div class="sec-split"><div><p class="label">How you&rsquo;ll learn</p></div>'

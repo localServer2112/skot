@@ -244,7 +244,7 @@ PROGRAMMES = [
         "badge": "Free six-week PR Foundation Course",
         "lede": "Build a strong foundation in PR and communications.",
         "body": "SKOT Impact Academy is SKOT Communications’ CSR initiative, created to nurture the next generation of storytellers. We invest in people with the passion and potential to make a difference through communications.",
-        "image": "assets/img/academy/full-room.jpg",
+        "image": "assets/img/academy/classroom-hero.jpg",
         "alt": "A full cohort of early-career communications professionals in the SKOT Impact Academy classroom",
         "cta": "Apply for the next cohort",
         "facts": [("6 weeks", "Duration"), ("In-person", "Format"), ("Free", "Based on eligibility"), ("Certificate", "Of participation on completion")],
