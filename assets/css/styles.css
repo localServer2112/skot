@@ -915,6 +915,9 @@ body[data-page="contact"] .contact-band{display:none}
 /* Programme facts: short text values ("Tuition-free", "1–2 yrs") sit at a size that fits a third of the column */
 .facts .stat-n{font-size:clamp(1.4rem,2.4vw,2rem); letter-spacing:var(--ls-h3); line-height:var(--lh-h3); white-space:nowrap}
 .facts .stats > div:first-child{padding-left:0}
+.stats--stack{grid-template-columns:minmax(0,1fr) !important}
+.stats--stack > div{padding-left:0; border-right:0; border-bottom:1px solid var(--line)}
+.stats--stack > div:last-child{border-bottom:0}
 
 /* SKOT Impact Academy carries the brand teal as its accent: ring, button, figures and rules */
 .prog--impact-academy{--scarlet:var(--teal)}

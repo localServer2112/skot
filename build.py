@@ -125,11 +125,12 @@ def footer_cols():
             '<div class="footer-col"><h4>Firm</h4>%s</div>') % (exp, work, firm)
 
 
-def stat_cells(metrics, cols=None):
-    n = cols or max(1, min(4, len(metrics)))
+def stat_cells(metrics, cols=None, stack=False):
+    n = 1 if stack else (cols or max(1, min(4, len(metrics))))
     cells = "".join('<div><div class="stat-n">%s</div><div class="stat-l">%s</div></div>' % (_figure(v, "stat-fig"), l)
                     for v, l in metrics)
-    return '<div class="stats" style="grid-template-columns:repeat(%d,minmax(0,1fr))">%s</div>' % (n, cells)
+    return ('<div class="stats%s" style="grid-template-columns:repeat(%d,minmax(0,1fr))">%s</div>'
+            % (" stats--stack" if stack else "", n, cells))
 
 
 def case_card(c, i):
@@ -652,7 +653,7 @@ def main():
            _ph("embrace", "Two members of the Academy community sharing an embrace", pos="50% 30%"), ARROW))
 
     for p in D.PROGRAMMES:
-        facts = stat_cells(p["facts"], cols=2 if p["slug"] == "impact-academy" else None)
+        facts = stat_cells(p["facts"], cols=2) if p["slug"] == "impact-academy" else stat_cells(p["facts"], stack=True)
         built.append(render(
             prog_href(p), "%s — SKOT Communications" % p["name"], p["lede"],
             page_body("_programme.html", SLUG=p["slug"], BADGE=html.escape(p["badge"]), NAME=html.escape(p["name"]),
