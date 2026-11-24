@@ -257,7 +257,7 @@ PROGRAMMES = [
         "body": "SKOT Elevate is the dedicated training arm of SKOT Communications, created to equip professionals, entrepreneurs and teams across Nigeria with the practical skills and strategic insight required to advance their careers, strengthen organisations and achieve measurable business outcomes. Organisations can access tailored workshops, virtual sessions, hybrid programmes, executive coaching, organisational training and retainer-based capacity development.",
         "image": "assets/img/prog-elevate.jpg",
         "alt": "Professionals in a working session around a conference table",
-        "cta": "Explore SKOT Elevate",
+        "cta": "Find your next step",
         "facts": [("Workshops", "tailored workshops and organisational training"), ("Hybrid", "virtual sessions and hybrid programmes"), ("Coaching", "executive coaching and retainer-based capacity development")],
     },
 ]

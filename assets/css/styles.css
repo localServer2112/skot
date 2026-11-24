@@ -954,6 +954,7 @@ body[data-page="contact"] .contact-band{display:none}
 .acad-cta-body{display:flex; flex-direction:column; justify-content:center; align-items:flex-start; gap:1.5rem; padding:clamp(2rem,6vw,5.5rem) clamp(1.5rem,5vw,5rem)}
 .acad-cta .label::before{border-color:var(--on-dark)}
 .acad-cta .h2{color:var(--on-dark); max-width:20ch}
+.acad-cta .acad-brand{color:#D6001C}
 /* Impact Academy: modules list */
 .acad-mods{list-style:none; margin:clamp(1.75rem,3vw,2.5rem) 0 0; padding:0; border-top:1px solid var(--line)}
 .acad-mod{display:grid; grid-template-columns:3.5rem minmax(0,1fr); column-gap:1rem; align-items:baseline; padding:1.15rem 0; border-bottom:1px solid var(--line)}

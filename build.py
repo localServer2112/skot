@@ -639,11 +639,11 @@ def main():
         '<ol class="acad-pillars">%s</ol></div></section>'
         '<section class="acad-band"><div class="shell">'
         '<div class="acad-head"><p class="label label--light">Inside the Academy</p>'
-        '<h2 class="h2">The cohorts, in the room.</h2></div>'
+        '<h2 class="h2">Learning. Leading. Growing.</h2></div>'
         '<div class="acad-mosaic">%s</div></div></section>'
         '<section class="acad-cta"><div class="acad-cta-ph">%s</div>'
         '<div class="acad-cta-body"><p class="label label--light">Next cohort</p>'
-        '<h2 class="h2">Start your PR journey with SKOT Impact Academy.</h2>'
+        '<h2 class="h2">Start your PR journey with <span class="acad-brand">SKOT Impact Academy.</span></h2>'
         '<a class="btn btn-light" href="contact.html">Apply for the next cohort %s</a></div></section>'
         % (html.escape(D.ACADEMY_WHO), html.escape(D.ACADEMY_COURSE), _mod_html, _pillar_html, _mosaic_html,
            _ph("embrace", "Two members of the Academy community sharing an embrace", pos="50% 30%"), ARROW))
