@@ -505,10 +505,15 @@ def main():
 
     # ── About ───────────────────────────────────────────────────────────────
     intro = "".join('<p class="body-copy t-lead">%s</p>' % p for p in D.ABOUT["intro"])
-    clients = '<div class="cells cells-3" style="border-bottom:1px solid var(--line)">' + "".join(
-        '<div><p class="eyebrow">%s</p><p class="h4" style="margin-top:.9rem">%s</p>'
-        '<a class="alink alink--sm" style="margin-top:1rem" href="%s">Read the story %s</a></div>'
-        % (c["sector"], c["client"], case_href(c), ARROW) for c in D.CASES) + "</div>"
+    def client_cell(c):
+        logo = client_logo(c["slug"])
+        mark = ('<img src="%s" alt="" width="%d" height="%d" loading="lazy" decoding="async">' % logo
+                if logo else '<span class="mark">%s</span>' % html.escape(c["client"]))
+        return ('<div><span class="cell-logo">%s</span><p class="eyebrow">%s</p>'
+                '<p class="h4" style="margin-top:.9rem">%s</p>'
+                '<a class="alink alink--sm" href="%s">Read the story %s</a></div>'
+                % (mark, c["sector"], c["client"], case_href(c), ARROW))
+    clients = '<div class="cells cells-3 cells--grid">' + "".join(client_cell(c) for c in D.CASES) + "</div>"
     built.append(render(
         "about.html", "About — SKOT Communications",
         "SKOT Communications is a strategic communications and reputation management consultancy with a Sub-Saharan Africa focus.",
