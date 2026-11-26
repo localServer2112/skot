@@ -225,7 +225,13 @@ def client_rail():
             return ('<a class="trust-logo" href="%s" aria-label="%s"><img src="%s" alt="%s" width="%d" height="%d" '
                     'loading="lazy" decoding="async"></a>' % ((case_href(c), name) + (logo[0], name, logo[1], logo[2])))
         return '<a href="%s">%s</a>' % (case_href(c), name)
-    return "".join(item(c) for c in D.CASES)
+    def links(dupe):
+        out = "".join(item(c) for c in D.CASES)
+        return out.replace("<a ", '<a tabindex="-1" ') if dupe else out
+    # Set emitted twice so the track can translate by exactly -50% and wrap seamlessly; the copy is
+    # hidden from assistive tech and the tab order so each client is only announced once.
+    return ('<div class="trust-marquee"><div class="trust-set">%s</div>'
+            '<div class="trust-set" aria-hidden="true">%s</div></div>' % (links(False), links(True)))
 
 
 def expertise_tabs():

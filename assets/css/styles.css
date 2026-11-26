@@ -357,9 +357,14 @@ body[data-page="programmes"] .nav-desktop [data-nav="programmes"],
 .trust .shell{display:flex; flex-direction:column; align-items:center; gap:clamp(1.6rem,3vw,2.2rem)}
 .trust .label{justify-content:center}
 .trust-row{
-  display:flex; flex-wrap:wrap; justify-content:center; align-items:center;
-  column-gap:clamp(2.2rem,5vw,4.5rem); row-gap:1.4rem; width:100%;
+  width:100%; overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
 }
+.trust-marquee{display:flex; width:max-content; animation:trustRun 40s linear infinite}
+.trust-row:hover .trust-marquee{animation-play-state:paused}
+.trust-set{display:flex; flex:none; min-width:100vw; justify-content:space-around; align-items:center; gap:clamp(2.2rem,5vw,4.5rem); padding-inline:clamp(1.1rem,2.5vw,2.25rem)}
+@keyframes trustRun{to{transform:translateX(-50%)}}
 .trust-row a{
   font-size:var(--fs-h5); letter-spacing:var(--ls-h5); line-height:var(--lh-h5); font-weight:var(--fw-med);
   color:var(--ink-56); transition:color .2s var(--ease);
@@ -820,6 +825,8 @@ body[data-page="programmes"] .nav-desktop [data-nav="programmes"],
   .reveal{opacity:1; translate:none}
   .vhero-video{display:none}
   .vhero-marquee{animation:none}
+  .trust-marquee{animation:none}
+  .trust-row{overflow-x:auto}
   .mw-card:hover .mw-icon{transform:none}
   .ins-card:hover .ins-media img{transform:none}
   .vhero-rail{overflow-x:auto}

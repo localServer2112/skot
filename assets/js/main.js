@@ -198,7 +198,7 @@
     '.phero .eyebrow', '.phero .lede', '.phero-side .btn',
     '.sec-head .label', '.sec-split .label', '.sec-head > .alink', '.sec-head p.lede',
     '.sec-split .body-copy', '.sec-split .alink',
-    '.xp-tab', '.res-lead', '.res-row', '.mw-card', '.trust-row > a',
+    '.xp-tab', '.res-lead', '.res-row', '.mw-card', '.trust-row',
     '.card-grid > .card', '.post-grid > .post', '.ins-card',
     '.stats > div', '.cells > *', '.caps li', '.case-sections > *',
     '.pg-aside', '.pg-main .btn', '.pg-strip img', '.footer-col'
